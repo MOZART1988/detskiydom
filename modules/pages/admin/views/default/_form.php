@@ -21,7 +21,12 @@ use yii\widgets\ActiveForm;
 
             <?= $form->field($model, 'short_text')->textarea(['rows' => 4]); ?>
 
-            <?= $form->field($model, 'text')->textarea(['rows' => 4]); ?>
+            <?= $form->field($model, 'text')->widget(\mihaildev\ckeditor\CKEditor::class,[
+                'editorOptions' => [
+                    'preset' => 'standart',
+                    'inline' => false,
+                ],
+            ]);?>
 
             <?= $form->field($model, 'sefname')->textInput(['maxlength' => 255, 'disabled' => 'disabled']) ?>
 

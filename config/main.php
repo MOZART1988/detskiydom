@@ -49,6 +49,9 @@ $result = [
             ],
             'sliders' => [
                 'class' => \app\modules\sliders\Module::class
+            ],
+            'content' => [
+                'class' => \app\modules\content\Module::class
             ]
         ],
         'components' => [

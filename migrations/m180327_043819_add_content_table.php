@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m180326_172608_add_sliders_table
+ * Class m180327_043819_add_content_table
  */
-class m180326_172608_add_sliders_table extends Migration
+class m180327_043819_add_content_table extends Migration
 {
     /**
      * {@inheritdoc}
@@ -14,13 +14,14 @@ class m180326_172608_add_sliders_table extends Migration
     {
         $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
 
-        $this->createTable('sliders', [
+        $this->createTable('content', [
             'id' => 'pk',
             'title' => $this->string()->notNull(),
             'text' => $this->text()->null(),
             'create_date' => $this->timestamp()->null(),
             'update_date' => $this->timestamp()->null(),
             'is_active' => $this->smallInteger()->defaultValue(1),
+            'sefname' => $this->string()->notNull(),
             'image' => $this->string()->null(),
         ], $tableOptions);
     }
@@ -30,6 +31,6 @@ class m180326_172608_add_sliders_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('sliders');
+       $this->dropTable('content');
     }
 }

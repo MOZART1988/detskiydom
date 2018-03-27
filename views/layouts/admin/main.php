@@ -64,22 +64,35 @@ $current_user = \app\modules\users\models\Users::findOne(\Yii::$app->getUser()->
                         <?=
                         \yiister\gentelella\widgets\Menu::widget(
                             [
-                                "items" => [
-                                    ["label" => "Главная", "url" => "/", "icon" => "home"],
+                                'items' => [
                                     [
-                                        "label" => "Пользователи",
-                                        "icon" => "th",
-                                        "url" => ['/users/default/index']
+                                        'label' => 'Главная',
+                                        'url' => '/',
+                                        'icon' => 'home'
                                     ],
                                     [
-                                        'label' => 'Слайдер на главной',
+                                        'label' => 'Пользователи',
                                         'icon' => 'th',
-                                        'url' => ['/sliders/default/index'],
+                                        'url' => ['/users/default/index']
                                     ],
                                     [
-                                        'label' => 'Новости',
+                                        'label' => 'Контент сайта',
                                         'icon' => 'th',
-                                        'url' => ['/pages/default/index'],
+                                        'url' => '#',
+                                        'items' => [
+                                            [
+                                                'label' => 'Новости',
+                                                'url' => ['/pages/default/index']
+                                            ],
+                                            [
+                                                'label' => 'Текстовые страницы',
+                                                'url' => ['/content/default/index']
+                                            ],
+                                            [
+                                                'label' => 'Слайдер на главной',
+                                                'url' => ['/sliders/default/index']
+                                            ]
+                                        ]
                                     ],
                                     [
                                         'label' => 'Модули',
@@ -96,66 +109,6 @@ $current_user = \app\modules\users\models\Users::findOne(\Yii::$app->getUser()->
                                         'icon' => 'table',
                                         'url' => ['/translate/default/index']
                                     ]
-                                    /*["label" => "Layout", "url" => ["site/layout"], "icon" => "files-o"],
-                                    ["label" => "Error page", "url" => ["site/error-page"], "icon" => "close"],
-                                    [
-                                        "label" => "Widgets",
-                                        "icon" => "th",
-                                        "url" => "#",
-                                        "items" => [
-                                            ["label" => "Menu", "url" => ["site/menu"]],
-                                            ["label" => "Panel", "url" => ["site/panel"]],
-                                        ],
-                                    ],
-                                    [
-                                        "label" => "Badges",
-                                        "url" => "#",
-                                        "icon" => "table",
-                                        "items" => [
-                                            [
-                                                "label" => "Default",
-                                                "url" => "#",
-                                                "badge" => "123",
-                                            ],
-                                            [
-                                                "label" => "Success",
-                                                "url" => "#",
-                                                "badge" => "new",
-                                                "badgeOptions" => ["class" => "label-success"],
-                                            ],
-                                            [
-                                                "label" => "Danger",
-                                                "url" => "#",
-                                                "badge" => "!",
-                                                "badgeOptions" => ["class" => "label-danger"],
-                                            ],
-                                        ],
-                                    ],
-                                    [
-                                        "label" => "Multilevel",
-                                        "url" => "#",
-                                        "icon" => "table",
-                                        "items" => [
-                                            [
-                                                "label" => "Second level 1",
-                                                "url" => "#",
-                                            ],
-                                            [
-                                                "label" => "Second level 2",
-                                                "url" => "#",
-                                                "items" => [
-                                                    [
-                                                        "label" => "Third level 1",
-                                                        "url" => "#",
-                                                    ],
-                                                    [
-                                                        "label" => "Third level 2",
-                                                        "url" => "#",
-                                                    ],
-                                                ],
-                                            ],
-                                        ],
-                                    ],*/
                                 ],
                             ]
                         )
