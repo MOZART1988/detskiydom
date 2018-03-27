@@ -15,6 +15,9 @@ Thumbs.db
 # composer vendor dir
 /vendor
 
+/node_modules
+/bower_components
+
 # composer itself is not needed
 composer.phar
 
@@ -28,3 +31,37 @@ phpunit.phar
 
 tests/_output/*
 tests/_support/_generated
+
+/web/media
+/web/*.html
+/web/*.png
+/web/.htaccess
+
+/.tmp
+
+/config/local.php
+
+/config/mode.php
+
+node_modules
+bower_components
+.tmp
+.sass-cache
+*.sublime-project
+*.sublime-workspace
+
+/web/*.txt
+/web/*.html
+/web/*.ico
+/web/*.png
+/web/images
+/web/styles
+/web/scripts
+/web/fonts/**/*.*
+/web/.htaccess
+/web/media
+/web/assets
+/web/js/apps
+/web/js/pages
+/web/js/init.js
+/web/libs
