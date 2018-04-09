@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\sliders;
+namespace app\modules\galleries;
 
 use mtemplate\mclasses\MBTModule;
 

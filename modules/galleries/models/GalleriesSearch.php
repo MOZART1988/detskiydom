@@ -2,17 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: MOZART
- * Date: 19.09.2017
- * Time: 22:01
+ * Date: 09.04.2018
+ * Time: 21:50
  */
 
-namespace app\modules\sliders\models;
+namespace app\modules\galleries\models;
 
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
-class SlidersSearch extends Sliders
+class GalleriesSearch extends Galleries
 {
     /**
      * @inheritdoc
@@ -21,7 +21,7 @@ class SlidersSearch extends Sliders
     {
         return [
             [['id', 'is_active'], 'integer'],
-            [['title', 'text'], 'safe'],
+            [['title', 'create_date', 'update_date'], 'safe'],
         ];
     }
 
@@ -43,7 +43,7 @@ class SlidersSearch extends Sliders
      */
     public function search($params)
     {
-        $query = SlidersSearch::find();
+        $query = Galleries::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -61,8 +61,7 @@ class SlidersSearch extends Sliders
             'is_active' => $this->is_active,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'text', $this->text]);
+        $query->andFilterWhere(['like', 'title', $this->title]);
 
         return $dataProvider;
     }

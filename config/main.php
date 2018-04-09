@@ -47,11 +47,14 @@ $result = [
             'pages' => [
                 'class' => \app\modules\pages\Module::class
             ],
-            'sliders' => [
-                'class' => \app\modules\sliders\Module::class
+            'galleries' => [
+                'class' => \app\modules\galleries\Module::class
             ],
             'content' => [
                 'class' => \app\modules\content\Module::class
+            ],
+            'image' => [
+                'class' => \app\modules\image\Module::class
             ]
         ],
         'components' => [
