@@ -1,0 +1,59 @@
+.title--primary {
+  font-family: $font-primary-regular;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.title--secondary {
+  font-family: $font-primary-regular;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+h2 {
+  margin-top: 0;
+  font-family: 'Roboto Slab';
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 0;
+  font-family: 'Roboto Slab';
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+h2.orange-title, h3.orange-title {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  &:before {
+    content: url(../images/orange-title.png);
+    position: absolute;
+    left: -20px;
+    top: -13px;
+    z-index: -1;
+  }
+}
+
+h2.yellow-title, h3.yellow-title {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  &:before {
+    content: url(../images/yellow-title.png);
+    position: absolute;
+    left: -20px;
+    top: -13px;
+    z-index: -1;
+  }
+}

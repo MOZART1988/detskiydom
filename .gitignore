@@ -1,5 +1,5 @@
 # phpstorm project files
-.idea/
+.idea
 
 # netbeans project files
 nbproject
@@ -15,8 +15,16 @@ Thumbs.db
 # composer vendor dir
 /vendor
 
-/node_modules
-/bower_components
+/config/local.php
+
+#components js from composer
+/components/jquery
+/components/select2
+/components/require.config.js
+/components/require.css
+/components/require.js
+/components/require-built.js
+
 
 # composer itself is not needed
 composer.phar
@@ -29,26 +37,35 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
-tests/_output/*
-tests/_support/_generated
-
-/web/media
-/web/*.html
-/web/*.png
-/web/.htaccess
-
-/.tmp
-
-/config/local.php
-
-/config/mode.php
-
 node_modules
 bower_components
 .tmp
 .sass-cache
 *.sublime-project
 *.sublime-workspace
+
+/public/images
+/public/styles
+/public/scripts
+/public/*.html
+/public/*.txt
+/public/*.ico
+/public/*.png
+/public/.htaccess
+
+runtime
+composer.lock
+.sass-cache
+bower_components
+
+# vendor
+composer.phar
+Apache-2.4_vhost.conf
+runtime
+.idea
+
+/web/**
+libs
 
 /web/*.txt
 /web/*.html

@@ -1,208 +1,75 @@
-Yii 2 Basic Project Template
-============================
+##### v2.2.1 (gulp+webpack)
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-rapidly creating small projects.
+# Среда разработки
+* **node** ^6.x.x (для упрощения процесса перехода между версиями советую установить **[n](https://www.npmjs.com/package/n)**)
+* **npm** ^3.x.x
+* **gulp** ^3.x.x (требуется глобальная установка через npm install -g gulp@3)
 
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
 
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-basic/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-basic/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-basic.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-basic)
+# Шаги
+* После клонирования проекта локально, переименовываем папку _rocket-frontend/_ в соответствии с названием нашего нового проекта
+* Создаем свой проект в гитлабе Ракетной фирмы. http://gitlab.rocketfirm.net. Либо, если проект уже существует, заливает в него недостающий папки и файлы из этого репозитория
+* После создания нового проета в Git, правим гитовские конфиги в локальной директории проекта на вашей машине, чтобы он смотрел на ваш новый репозиторий, а не на репозиторий шаблона (https://help.github.com/articles/changing-a-remote-s-url/). Либо просто удаляем папку .git и следуем инструкциям Git (при создании нового проекта, Git детально описывает, что вам нужно сделать)
+* Из корня данного проекта запускаем команду `npm install && bower install`, чтобы установить нужные зависимости   
 
-DIRECTORY STRUCTURE
--------------------
 
-      assets/             contains assets definition
-      commands/           contains console commands (controllers)
-      config/             contains application configurations
-      controllers/        contains Web controller classes
-      mail/               contains view files for e-mails
-      models/             contains model classes
-      runtime/            contains files generated during runtime
-      tests/              contains various tests for the basic application
-      vendor/             contains dependent 3rd-party packages
-      views/              contains view files for the Web application
-      web/                contains the entry script and Web resources
+# Команды
+## `gulp serve`
+Сервирует проект с локалхоста, смотрит в папки _.tmp/_ и _frontend/_. Основной режим разработки.
 
+## `gulp serve:web`
+Сервирует собранный проект с локалхоста, смотрит в папку _web/_.
 
+## `gulp`
+Дефолтная команда для сборки проекта в режиме markup.
 
-REQUIREMENTS
-------------
+## `gulp build`
+Собирает проект в папку _web/_ в режиме markup. Билдит html файлы, копирует папку _pics/_, не собирает админские скрипты и стили.
 
-The minimum requirement by this project template that your Web server supports PHP 5.4.0.
+## `gulp build:prod`
+Собирает проект в папку _web/_ в режиме production. Не билдит html файлы, не копирует папку _pics/_, собирает админские скрипты и стили. Использовать эту команду в деплоере.
 
+## `gulp size`
+Выдает общий gzip размер папки _web/_. Без учета папки _media/_.
 
-INSTALLATION
-------------
+## `gulp size:all`
+Выдает общий gzip размер папки _web/_. C учетом папки _media/_.
 
-### Install via Composer
+## `gulp size:detailed`
+Выдает gzip размеры папок _styles/_, _scripts/_, _images/_, _fonts/_ и размеры файлов, которые находятся внутри.   
 
-If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
 
-You can then install this project template using the following command:
 
-~~~
-php composer.phar global require "fxp/composer-asset-plugin:^1.3.1"
-php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
-~~~
+# HTML шаблонизатор **[Nunjucks](https://mozilla.github.io/nunjucks/templating.html)** от Mozilla
+Переходим на nunjucks:) Привыкаем к синтаксису а ля `{% include "_partials/header" %}`, `{% block content %}{% endblock %}`, `{% extends "_partials/variables.njk" %}`. Как обычно, стараемся все повторяющиеся блоки, такие как хэдер, футер, пагинацию, делать паршиалами, и добавлять их в нашу разметку как по мере необходимости. Эти компоненты создаем в папке _partials. Подробнее о синтаксисе и возможностях nunjucks читаем в документации. Темплейты самих сттаниц создаем в папке `layouts/`.
 
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
+#### Подсветка синтаксиса в Sublime Text для nunjucks - **Jinja2 (HTML)**   
 
-~~~
-http://localhost/basic/web/
-~~~
 
 
-### Install from an Archive File
+# Подключение jQuery
+Так как на бою Yii сам подключает свой jQuery, при сборке в режиме production jquery уже не нужен. Для этого в папке /views/layouts/ лежит два темплейта, которые отличаются только наличием/отсутствием строки ```<script src="bower_components/jquery/dist/jquery.min.js"></script>```. Какой именно шаблон использовать определяем внутри `views/_partials/variables.njk`. Этот паршиал экспортирует переменную на все страницы, через нее мы и пределяем какой шаблон использовать при сборке. Дефолтный темплейт - `markup.njk`.
 
-Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
 
-Set cookie validation key in `config/web.php` file to some random secret string:
+# Плагины
+Все библитеки устанавливаем через bower. Подключаем в следующих точках:
+1. в файлах папки layouts/, внутри <!-- bower -->...<!-- endbower -->
+2. админские скрипты и стили подключаем в gulpfile.js внутри задач `styles-admin-plugins` и `scripts-admin-plugins`
 
-```php
-'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-    'cookieValidationKey' => '<secret random string goes here>',
-],
-```
 
-You can then access the application through the following URL:
+# Админские файлы
 
-~~~
-http://localhost/basic/web/
-~~~
+### Стили
+* Как и раньше, кастомные стили кладем в папку styles/admin/
+* Админские стили подключаем в gulpfile.js внутри задачи `styles-admin-plugins`
 
+### Скрипты
+* Кастомные скрипты, как обычно, складываем в папку scripts/admin/
+* Админские скрипты подключаем в gulpfile.js внутри задачи `scripts-admin-plugins`
 
-CONFIGURATION
--------------
 
-### Database
+# Линтеры
+Для проверки синтаксиса используются [stylelint](http://stylelint.io/user-guide/rules/) и [eslint](http://eslint.org/docs/rules/). Они запускаются каждый раз, когда мы делаем изменение в .css и в .js файлах. Конфиги линтеров находятся в файлах .stylelintrc и .eslinrc.
 
-Edit the file `config/db.php` with real data, for example:
 
-```php
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '1234',
-    'charset' => 'utf8',
-];
-```
-
-**NOTES:**
-- Yii won't create the database for you, this has to be done manually before you can access it.
-- Check and edit the other files in the `config/` directory to customize your application as required.
-- Refer to the README in the `tests` directory for information specific to basic application tests.
-
-
-
-TESTING
--------
-
-Tests are located in `tests` directory. They are developed with [Codeception PHP Testing Framework](http://codeception.com/).
-By default there are 3 test suites:
-
-- `unit`
-- `functional`
-- `acceptance`
-
-Tests can be executed by running
-
-```
-vendor/bin/codecept run
-``` 
-
-The command above will execute unit and functional tests. Unit tests are testing the system components, while functional
-tests are for testing user interaction. Acceptance tests are disabled by default as they require additional setup since
-they perform testing in real browser. 
-
-
-### Running  acceptance tests
-
-To execute acceptance tests do the following:  
-
-1. Rename `tests/acceptance.suite.yml.example` to `tests/acceptance.suite.yml` to enable suite configuration
-
-2. Replace `codeception/base` package in `composer.json` with `codeception/codeception` to install full featured
-   version of Codeception
-
-3. Update dependencies with Composer 
-
-    ```
-    composer update  
-    ```
-
-4. Download [Selenium Server](http://www.seleniumhq.org/download/) and launch it:
-
-    ```
-    java -jar ~/selenium-server-standalone-x.xx.x.jar
-    ```
-
-    In case of using Selenium Server 3.0 with Firefox browser since v48 or Google Chrome since v53 you must download [GeckoDriver](https://github.com/mozilla/geckodriver/releases) or [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads) and launch Selenium with it:
-
-    ```
-    # for Firefox
-    java -jar -Dwebdriver.gecko.driver=~/geckodriver ~/selenium-server-standalone-3.xx.x.jar
-    
-    # for Google Chrome
-    java -jar -Dwebdriver.chrome.driver=~/chromedriver ~/selenium-server-standalone-3.xx.x.jar
-    ``` 
-    
-    As an alternative way you can use already configured Docker container with older versions of Selenium and Firefox:
-    
-    ```
-    docker run --net=host selenium/standalone-firefox:2.53.0
-    ```
-
-5. (Optional) Create `yii2_basic_tests` database and update it by applying migrations if you have them.
-
-   ```
-   tests/bin/yii migrate
-   ```
-
-   The database configuration can be found at `config/test_db.php`.
-
-
-6. Start web server:
-
-    ```
-    tests/bin/yii serve
-    ```
-
-7. Now you can run all available tests
-
-   ```
-   # run all available tests
-   vendor/bin/codecept run
-
-   # run acceptance tests
-   vendor/bin/codecept run acceptance
-
-   # run only unit and functional tests
-   vendor/bin/codecept run unit,functional
-   ```
-
-### Code coverage support
-
-By default, code coverage is disabled in `codeception.yml` configuration file, you should uncomment needed rows to be able
-to collect code coverage. You can run your tests and collect coverage with the following command:
-
-```
-#collect coverage for all tests
-vendor/bin/codecept run -- --coverage-html --coverage-xml
-
-#collect coverage only for unit tests
-vendor/bin/codecept run unit -- --coverage-html --coverage-xml
-
-#collect coverage for unit and functional tests
-vendor/bin/codecept run functional,unit -- --coverage-html --coverage-xml
-```
-
-You can see code coverage output under the `tests/_output` directory.
+## [Трекер багов](http://gitlab.rocketfirm.net/rocketfirm/rocket-frontend/issues)
