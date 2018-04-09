@@ -2,27 +2,28 @@
 /**
  * Created by PhpStorm.
  * User: MOZART
- * Date: 19.09.2017
- * Time: 21:59
+ * Date: 09.04.2018
+ * Time: 22:14
  */
 
-namespace app\modules\sliders\admin\controllers;
+namespace app\modules\galleries\admin\controllers;
 
-use app\modules\sliders\models\SlidersSearch;
-use app\modules\sliders\models\Sliders;
+
+use app\modules\galleries\models\Galleries;
+use app\modules\galleries\models\GalleriesSearch;
 use mtemplate\mcontrollers\MBTAController;
-use Yii;
 use yii\web\NotFoundHttpException;
+use Yii;
 
 class DefaultController extends MBTAController
 {
     /**
-     * Lists all Sliders models.
+     * Lists all GalleriesSearch models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new SlidersSearch();
+        $searchModel = new GalleriesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -32,15 +33,13 @@ class DefaultController extends MBTAController
     }
 
     /**
-     * Creates a new Sliders model.
+     * Creates a new Galleries model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Sliders();
-
-        $model->setScenario('create');
+        $model = new Galleries();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -52,7 +51,7 @@ class DefaultController extends MBTAController
     }
 
     /**
-     * Updates an existing Sliders model.
+     * Updates an existing Galleries model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -60,8 +59,6 @@ class DefaultController extends MBTAController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        $model->setScenario('update');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -73,7 +70,7 @@ class DefaultController extends MBTAController
     }
 
     /**
-     * Deletes an existing Sliders model.
+     * Deletes an existing Galleries model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -86,15 +83,15 @@ class DefaultController extends MBTAController
     }
 
     /**
-     * Finds the Sliders model based on its primary key value.
+     * Finds the Galleries model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Sliders the loaded model
+     * @return Galleries the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Sliders::findOne($id)) !== null) {
+        if (($model = Galleries::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

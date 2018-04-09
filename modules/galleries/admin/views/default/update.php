@@ -3,12 +3,12 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model \app\modules\sliders\models\Sliders */
+/* @var $model \app\modules\galleries\models\Galleries */
 
-$this->title = Yii::t('users', 'Изменение Слайда: ', [
-        'modelClass' => 'Переменные',
+$this->title = Yii::t('admin', 'Изменение галереи: ', [
+        'modelClass' => 'Галереи',
     ]) . ' ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('users', 'Слайды'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('admin', 'Галереи'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('users', 'Изменение');
 ?>

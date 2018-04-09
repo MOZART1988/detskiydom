@@ -23,9 +23,6 @@ $result = [
                 'showScriptName' => false,
                 'suffix' => '/',
                 'rules' => [
-                    'products' => 'products/default/index',
-                    'content/<sefname>/<current_page_id>' => 'content/default/index',
-                    'faq/<category_id>' => 'faq/default/index',
                     [
                         'pattern' => 'sitemap',
                         'route' => 'pages/default/sitemap',

@@ -11,14 +11,7 @@ class DefaultController extends MBTController
 
     public function actionIndex()
     {
-
-        $variables = CustomVariables::find()->where(['is_active' => 1, 'module_name' => \Yii::$app->controller->module->id])->all();
-
-        if (!$variables) {
-            throw new NotFoundHttpException();
-        }
-
-        return $this->render('index', ['variables' => $variables]);
+        return $this->render('index');
     }
 
     public function actionError()
