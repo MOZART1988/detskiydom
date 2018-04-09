@@ -17,7 +17,7 @@ $(document).ready(function() {
       spaceBetween: 35,
       pagination: {
         el: '.news-slider .swiper-pagination',
-        clickable: true,
+        clickable: true
       },     
       slidesPerGroup: 4,
       loopFillGroupWithBlank: true
@@ -28,7 +28,7 @@ $(document).ready(function() {
       spaceBetween: 10,
 	  navigation: {
 	    nextEl: '#galery-slider1 .swiper-button-next',
-	    prevEl: '#galery-slider1 .swiper-button-prev',
+	    prevEl: '#galery-slider1 .swiper-button-prev'
 	  }, 
       loop: true
    });
@@ -38,24 +38,20 @@ $(document).ready(function() {
       spaceBetween: 10,
 	  navigation: {
 	    nextEl: '#galery-slider2 .swiper-button-next',
-	    prevEl: '#galery-slider2 .swiper-button-prev',
+	    prevEl: '#galery-slider2 .swiper-button-prev'
 	  },        
       loop: true
    });
 
-// $(".galery-slider .swiper-container").each(function(index, element){
-//     var $this = $(this);
-//     var galerySwiper = new Swiper(this, {
-//     	slidesPerView: 4,
-// 	    spaceBetween: 10,
-// 		navigation: {
-// 		  nextEl:  $this.find('.galery-slider .swiper-button-next')[0],
-// 		  prevEl:  $this.find('.galery-slider .swiper-button-prev')[0],
-// 		},  
-// 	    slidesPerGroup: 4,
-// 	    loopFillGroupWithBlank: true
-//     });
-// });
+  let sideSwiper = new Swiper('.side-slider .swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 0,
+      pagination: {
+        el: '.side-slider .swiper-pagination',
+        clickable: true
+      },    
+      loop: true
+   });
 
 setTimeout(function(){
   	 
