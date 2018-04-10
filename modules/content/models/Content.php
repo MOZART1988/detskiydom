@@ -25,6 +25,8 @@ use yii\db\Expression;
  * @property string $text
  * @property string $title
  * @property string $sefname
+ * @property string $quote
+ * @property string $goals
 */
 
 class Content extends ActiveRecord
@@ -43,7 +45,7 @@ class Content extends ActiveRecord
         return [
             [['is_active'], 'integer'],
             [['title', 'sefname'], 'required'],
-            [['text', 'sefname'], 'string'],
+            [['text', 'sefname', 'quote', 'goals'], 'string'],
             [['create_date', 'update_date'], 'safe'],
             ['image', 'image', 'extensions' => 'jpg, jpeg, gif, png', 'on' => ['create', 'update']],
         ];
@@ -60,7 +62,9 @@ class Content extends ActiveRecord
             'title' => 'Заголовок',
             'is_active' => 'Активность',
             'image' => 'Картинка',
-            'sefname' => 'ЧПУ'
+            'sefname' => 'ЧПУ',
+            'goals' => 'Цели (каждую строчку писать с новой строки)',
+            'quote' => 'Цитата',
         ];
     }
 
@@ -83,6 +87,7 @@ class Content extends ActiveRecord
                 'url' => '@web/media/content/{id}',
                 'thumbs' => [
                     'thumb' => ['width' => 200, 'quality' => 100],
+                    'inside' => ['width' => 890, 'quality' => 100]
                 ],
             ],
             'Sluggable' => [

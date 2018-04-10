@@ -21,6 +21,7 @@ use mongosoft\file\UploadImageBehavior;
  * @property string $create_date
  * @property string $update_date
  * @property string $image
+ * @property string $sefname
  */
 class Pages extends ActiveRecord
 {
@@ -106,7 +107,8 @@ class Pages extends ActiveRecord
                 'url' => '@web/media/pages/{id}',
                 'thumbs' => [
                     'thumb' => ['width' => 200, 'quality' => 100],
-                    'news_thumb' => ['width' => 261, 'quality' => 100]
+                    'news_thumb' => ['width' => 261, 'quality' => 100],
+                    'news_sidebar' => ['width' => 320, 'quality' => 100]
                 ],
             ],
             'Sluggable' => [

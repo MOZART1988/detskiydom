@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var \yii\web\View $this
+*/
+?>
 <header class="header">
     <div class="container">
         <div class="header-content">
@@ -29,30 +34,6 @@
                 <a href="" class="btn btn--orangelight"> Участвуйте в опросе </a>
             </div>
         </div>
-        <div class="main-menu">
-            <ul>
-                <li class="active">
-                    <a href="">Главная</a>
-                </li>
-                <li>
-                    <a href="">О фонде</a>
-                </li>
-                <li>
-                    <a href="">Пресс-центр</a>
-                </li>
-                <li>
-                    <a href="">Программы фонда</a>
-                </li>
-                <li>
-                    <a href="">Полезная информация</a>
-                </li>
-                <li>
-                    <a href="">Живые истории</a>
-                </li>
-                <li>
-                    <a href="">Контакты</a>
-                </li>
-            </ul>
-        </div>
+        <?=$this->render('_header_menu')?>
     </div>
 </header>

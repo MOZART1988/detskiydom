@@ -30,6 +30,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'image')->fileInput() ?>
 
+    <?= $form->field($model, 'quote')->textInput()?>
+
+    <?= $form->field($model, 'goals')->textarea()?>
+
     <?php if (!empty($model->image)) : ?>
         <?= Html::img($model->getThumbUploadUrl('image', 'thumb'), ['class' => 'img-thumbnail']) ?>
     <?php endif; ?>

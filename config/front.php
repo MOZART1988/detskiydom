@@ -23,6 +23,7 @@ $result = [
                 'showScriptName' => false,
                 'suffix' => '/',
                 'rules' => [
+                    'content/<id>' => 'content/default/view',
                     [
                         'pattern' => 'sitemap',
                         'route' => 'pages/default/sitemap',
@@ -39,7 +40,6 @@ $result = [
                     'search' => 'search/default/index',
                     'gallery/view/<id>' => 'gallery/default/view',
                     'noimage/<wh>' => 'pages/default/no-image',
-                    'content/<sefname>' => 'content/default/index',
                     [
                         'pattern' => '<category>/<sefname>',
                         'route' => 'pages/default/index',
