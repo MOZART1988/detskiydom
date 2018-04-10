@@ -34,6 +34,16 @@
 		padding-top: 0;
 		color: #272727;
 	}
+	&.btn--orangeSmall {
+		background: url(../images/orangeSmall.png) center no-repeat;
+		width: 116px;
+		height: 30px;
+		line-height: 24px;
+		text-transform: lowercase;
+		font-size: 12px;
+		padding-top: 0;
+		color: #fff;
+	}
 	&.btn--orangelight {
 		background: url(../images/orange-light.png) center no-repeat;
 		width: 257px;

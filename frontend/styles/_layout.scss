@@ -65,7 +65,7 @@ body {
 .flex-container {
   display: flex;
   .center-block {
-    width: calc(100% - 320px);
+    width: calc(100% - 310px);
     padding-right: 40px;
     h1 {
     	font-size: 25px;
@@ -73,7 +73,7 @@ body {
     }
   }
   .right-block {
-    width: 320px;
+    width: 310px;
   }
 }
 

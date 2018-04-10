@@ -486,7 +486,40 @@
 }
 
 .side-slider {
+  margin-top: 23px;
+  margin-bottom: 40px;
+  .swiper-pagination {
+    text-align: left;
+    margin-top: 0;
+    .swiper-pagination-bullet {
+      margin: 0;
+      & + .swiper-pagination-bullet {
+        margin-left: 8px;
+      }
+    }
+  }
+  .btn {
+    float: right;
+    margin-top: -30px;
+    position: relative;
+    z-index: 100;
+  }
   img {
     width: 100%;
+  }
+}
+
+
+.news-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -20px;
+  margin-right: -20px;
+  .news-item {
+    width: calc(33.33% - 40px);
+    margin: 0 20px 40px;
+    img {
+      margin-bottom: 20px;
+    }
   }
 }
