@@ -55,6 +55,7 @@ AppAsset::register($this);
 <!-- end .modal -->
 <div class="top-block">
     <?=$this->render('_partials/_header')?>
+    <?=\app\components\widgets\BreadcumsWidget::widget()?>
     <?=\app\components\widgets\SliderWidget::widget()?>
 </div>
 <main class="main">

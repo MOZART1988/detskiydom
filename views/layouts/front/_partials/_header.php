@@ -26,8 +26,9 @@
                 </div>
             </div>
             <div class="header-center">
-                <a href="">
-                    <img src="images/logo.png" alt=""> </a>
+                <a href="<?=\yii\helpers\Url::to(['/basepage/default/index'])?>">
+                    <img src="/images/logo.png" alt="">
+                </a>
             </div>
             <div class="header-right">
                 <a href="" class="btn btn--orange"> Сделайте свой вклад </a>
