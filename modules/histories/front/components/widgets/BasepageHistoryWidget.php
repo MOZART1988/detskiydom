@@ -18,7 +18,7 @@ class BasepageHistoryWidget extends Widget
     {
         parent::run();
 
-        $history = Histories::find()->where(['is_active' => 1])->orderBy('RAND ()')->one();
+        $history = Histories::find()->where(['is_active' => 1])->orderBy(['create_date' => SORT_DESC])->one();
 
         if ($history === null) {
             echo 1;
