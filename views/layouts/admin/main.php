@@ -186,7 +186,7 @@ $current_user = \app\modules\users\models\Users::findOne(\Yii::$app->getUser()->
                                 <?php } ?>
                             </ul>
                         </li>
-                        <li role="presentation" class="dropdown">
+                        <!--<li role="presentation" class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-envelope-o"></i>
                                 <span class="badge bg-green">6</span>
@@ -257,7 +257,7 @@ $current_user = \app\modules\users\models\Users::findOne(\Yii::$app->getUser()->
                                     </div>
                                 </li>
                             </ul>
-                        </li>
+                        </li>-->
 
                     </ul>
                 </nav>
