@@ -23,6 +23,18 @@ $(document).ready(function() {
       loopFillGroupWithBlank: true
   });
 
+  let newsInnerSwiper = new Swiper('.inner-news-slider .swiper-container', {
+      slidesPerView: 3,
+      spaceBetween: 35,
+      pagination: {
+        el: '.inner-news-slider .swiper-pagination',
+        clickable: true
+      },     
+      slidesPerGroup: 3,
+      loopFillGroupWithBlank: true
+  });
+ 
+
   let galerySwiper1 = new Swiper('#galery-slider1 .swiper-container', {
       slidesPerView: 4,
       spaceBetween: 10,
