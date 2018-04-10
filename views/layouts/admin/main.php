@@ -85,6 +85,10 @@ $current_user = \app\modules\users\models\Users::findOne(\Yii::$app->getUser()->
                                                 'url' => ['/pages/default/index']
                                             ],
                                             [
+                                                'label' => 'Живые истории',
+                                                'url' => ['/histories/default/index']
+                                            ],
+                                            [
                                                 'label' => 'Текстовые страницы',
                                                 'url' => ['/content/default/index']
                                             ],

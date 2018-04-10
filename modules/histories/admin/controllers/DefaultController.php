@@ -1,57 +1,54 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: MOZART
- * Date: 09.04.2018
- * Time: 22:14
+ * User: ivan
+ * Date: 10.04.18
+ * Time: 2:02 PM
  */
 
-namespace app\modules\galleries\admin\controllers;
+namespace app\modules\histories\admin\controllers;
 
 
-use app\modules\galleries\models\Galleries;
-use app\modules\galleries\models\GalleriesSearch;
+use app\modules\histories\models\Histories;
+use app\modules\histories\models\HistoriesSearch;
 use mtemplate\mcontrollers\MBTAController;
 use yii\web\NotFoundHttpException;
-use Yii;
 
 class DefaultController extends MBTAController
 {
     /**
-     * Lists all GalleriesSearch models.
+     * Lists all Histories models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new GalleriesSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $searchModel = new HistoriesSearch();
+        $dataProvider = $searchModel->search(\Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        return $this->render('index', ['searchModel' => $searchModel, 'dataProvider' => $dataProvider]);
     }
 
     /**
-     * Creates a new Galleries model.
+     * Creates a new Histories model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Galleries();
+        $model = new Histories();
+        $model->setScenario('create');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
 
     /**
-     * Updates an existing Galleries model.
+     * Updates an existing Histories model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -59,18 +56,19 @@ class DefaultController extends MBTAController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->setScenario('update');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
-     * Deletes an existing Galleries model.
+     * Deletes an existing Histories model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -83,15 +81,15 @@ class DefaultController extends MBTAController
     }
 
     /**
-     * Finds the Galleries model based on its primary key value.
+     * Finds the Histories model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Galleries the loaded model
+     * @return Histories the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Galleries::findOne($id)) !== null) {
+        if (($model = Histories::findOne($id)) !== null) {
             return $model;
         }
 

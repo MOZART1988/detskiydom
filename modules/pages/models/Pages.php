@@ -83,7 +83,7 @@ class Pages extends ActiveRecord
             'text' => Yii::t('pages', 'Текст'),
             'sefname' => Yii::t('pages', 'ЧПУ'),
             'is_active' => Yii::t('pages', 'Активность'),
-            'image' => 'Изображение',
+            'image' => Yii::t('admin', 'Изображение'),
         ];
     }
 
@@ -106,6 +106,7 @@ class Pages extends ActiveRecord
                 'url' => '@web/media/pages/{id}',
                 'thumbs' => [
                     'thumb' => ['width' => 200, 'quality' => 100],
+                    'news_thumb' => ['width' => 261, 'quality' => 100]
                 ],
             ],
             'Sluggable' => [

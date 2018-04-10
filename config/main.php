@@ -55,6 +55,9 @@ $result = [
             ],
             'image' => [
                 'class' => \app\modules\image\Module::class
+            ],
+            'histories' => [
+                'class' => \app\modules\histories\Module::class
             ]
         ],
         'components' => [
