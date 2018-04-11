@@ -23,6 +23,8 @@
 
             </div>
         </section>
-        <?=\app\modules\pages\front\components\widgets\SidebarNewsWidget::widget()?>
+        <aside class="right-block">
+            <?=\app\modules\pages\front\components\widgets\SidebarNewsWidget::widget(['isProgramm' => false])?>
+        </aside>
     </div>
 </div>

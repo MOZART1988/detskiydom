@@ -65,6 +65,7 @@ class Content extends ActiveRecord
             'sefname' => 'ЧПУ',
             'goals' => 'Цели (каждую строчку писать с новой строки)',
             'quote' => 'Цитата',
+            'is_programm' => 'Программа фонда'
         ];
     }
 
@@ -87,7 +88,7 @@ class Content extends ActiveRecord
                 'url' => '@web/media/content/{id}',
                 'thumbs' => [
                     'thumb' => ['width' => 200, 'quality' => 100],
-                    'inside' => ['width' => 890, 'quality' => 100]
+                    'inside' => ['width' => 890, 'quality' => 100],
                 ],
             ],
             'Sluggable' => [

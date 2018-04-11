@@ -36,6 +36,10 @@ use yii\widgets\ActiveForm;
                 <?= Html::img($model->getThumbUploadUrl('image', 'thumb'), ['class' => 'img-thumbnail']) ?>
             <?php endif; ?>
 
+            <?= $form->field($model, 'is_programm')->checkbox()?>
+
+            <?= $form->field($model, 'is_active')->checkbox()?>
+
             <div class="form-group">
                 <?= Html::submitButton($model->isNewRecord ? Yii::t('pages', 'Создать') : Yii::t('pages',
                     'Изменить'), [

@@ -14,6 +14,7 @@ use mongosoft\file\UploadImageBehavior;
  * This is the model class for table "pages".
  *
  * @property integer $id
+ * @property integer $is_programm
  * @property string $title
  * @property string $short_text
  * @property string $text
@@ -54,6 +55,7 @@ class Pages extends ActiveRecord
             [
                 [
                     'is_active',
+                    'is_programm'
                 ],
                 'integer'
             ],
@@ -85,6 +87,7 @@ class Pages extends ActiveRecord
             'sefname' => Yii::t('pages', 'ЧПУ'),
             'is_active' => Yii::t('pages', 'Активность'),
             'image' => Yii::t('admin', 'Изображение'),
+            'is_programm' => Yii::t('admin', 'Программа фонда')
         ];
     }
 
