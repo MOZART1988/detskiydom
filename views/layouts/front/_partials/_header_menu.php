@@ -6,8 +6,9 @@
         <li class="<?=(\Yii::$app->controller->module->id === 'content') ? 'active' : ''?>">
             <a href="<?=\yii\helpers\Url::to(['/content/default/view', 'id' => 2])?>">О фонде</a>
         </li>
-        <li>
-            <a href="">Пресс-центр</a>
+        <li class="<?=(\Yii::$app->controller->module->id === 'pages' && (\Yii::$app->controller->action->id === 'news' ||
+        \Yii::$app->controller->action->id === 'news-view')) ? 'active' : ''?>">
+            <a href="<?=\yii\helpers\Url::to(['/pages/default/news'])?>">Пресс-центр</a>
         </li>
         <li>
             <a href="">Программы фонда</a>

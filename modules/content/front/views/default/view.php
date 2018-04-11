@@ -25,6 +25,7 @@
         </section>
         <aside class="right-block">
             <?=\app\modules\pages\front\components\widgets\SidebarNewsWidget::widget(['isProgramm' => false])?>
+            <?=\app\modules\pages\front\components\widgets\SidebarNewsWidget::widget(['isProgramm' => true])?>
         </aside>
     </div>
 </div>

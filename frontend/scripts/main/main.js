@@ -79,5 +79,28 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 
   // imported module
   myModule('myModule');
+
+    $('body').on('beforeSubmit', '#sidebar-contact-widget', function(){
+        var form = $(this);
+
+        $.ajax({
+           url: form.attr('action'),
+           type: 'POST',
+           dataType: 'JSON',
+           beforeSend: function () {
+
+           },
+           success: function (data) {
+               if (data.success == true) {
+                   $('.feedback-form').html('<h3>Спасибо за Ваше сообщение!</h3>');
+               }
+           },
+           error: function (data) {
+               $('.feedback-form').html('<h3>Произошла ошибка сервера, попробуйте позже!</h3>');
+           }
+        });
+
+        return false;
+    });
 });
 

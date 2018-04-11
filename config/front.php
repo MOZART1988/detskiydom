@@ -24,6 +24,8 @@ $result = [
                 'suffix' => '/',
                 'rules' => [
                     'content/<id>' => 'content/default/view',
+                    'news' => 'pages/default/news',
+                    'news/<id>' => 'pages/default/news-view',
                     [
                         'pattern' => 'sitemap',
                         'route' => 'pages/default/sitemap',

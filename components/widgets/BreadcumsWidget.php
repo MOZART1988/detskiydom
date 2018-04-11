@@ -10,6 +10,7 @@ namespace app\components\widgets;
 
 
 use app\modules\content\models\Content;
+use app\modules\pages\models\Pages;
 use yii\base\Widget;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -37,9 +38,26 @@ class BreadcumsWidget extends Widget
                     if ($model !== null) {
                         $result[] = $model->title;
                     }
-
                 }
 
+            break;
+            case 'pages':
+                switch (\Yii::$app->controller->action->id) {
+                    case 'news':
+                        $result[] = 'Новости';
+                    break;
+                    case 'news-view':
+                        $result[] = '<a href="/news">Новости</a>';
+
+                        $newsId = \Yii::$app->request->get('id');
+                        $model = Pages::findOne($newsId);
+
+                        if ($model !== null) {
+                            $result[] = $model->title;
+                        }
+
+                    break;
+                }
             break;
         }
 

@@ -4,7 +4,7 @@
  * @var boolean $isProgramm
 */
 ?>
-<h3 class="<?=$isProgramm ? 'yellow' : 'orange'?>-title"><?=\Yii::t('front', 'Новости и события')?></h3>
+<h3 class="<?=$isProgramm ? 'yellow' : 'orange'?>-title"><?=$isProgramm ? \Yii::t('front', 'Программы фонда') : \Yii::t('front', 'Новости и события')?></h3>
 <div class="side-slider">
     <!-- Slider main container -->
     <div class="swiper-container">
@@ -12,13 +12,25 @@
         <div class="swiper-wrapper">
             <?php foreach ($news as $item) : ?>
                 <div class="swiper-slide news-item">
-                    <a href="<?=\yii\helpers\Url::to(['/pages/default/view', 'sefname' => $item->sefname])?>">
-                        <?=\yii\helpers\Html::img($item->getThumbUploadUrl('image', 'news_sidebar'))?>
-                    </a>
-                    <div class="news-title">
-                        <a href="<?=\yii\helpers\Url::to(['/pages/default/view', 'sefname' => $item->sefname])?>">
-                            <?=$item->title?>
+                    <?php if ($isProgramm) : ?>
+                        <a href="<?=\yii\helpers\Url::to(['/pages/default/programm-view', 'id' => $item->id])?>">
+                            <?=\yii\helpers\Html::img($item->getThumbUploadUrl('image', 'news_sidebar'))?>
                         </a>
+                    <?php else : ?>
+                        <a href="<?=\yii\helpers\Url::to(['/pages/default/news-view', 'id' => $item->id])?>">
+                            <?=\yii\helpers\Html::img($item->getThumbUploadUrl('image', 'news_sidebar'))?>
+                        </a>
+                    <?php endif; ?>
+                    <div class="news-title">
+                        <?php if ($isProgramm) : ?>
+                            <a href="<?=\yii\helpers\Url::to(['/pages/default/programm-view', 'id' => $item->id])?>">
+                                <?=$item->title?>
+                            </a>
+                        <?php else : ?>
+                            <a href="<?=\yii\helpers\Url::to(['/pages/default/news-view', 'id' => $item->id])?>">
+                                <?=$item->title?>
+                            </a>
+                        <?php endif; ?>
                     </div>
                     <div class="news-text"><?=$item->short_text?></div>
                     <div class="news-date"><?=\Yii::$app->formatter->asDate($item->create_date, 'php:d.m.Y')?></div>

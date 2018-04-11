@@ -111,7 +111,8 @@ class Pages extends ActiveRecord
                 'thumbs' => [
                     'thumb' => ['width' => 200, 'quality' => 100],
                     'news_thumb' => ['width' => 261, 'quality' => 100],
-                    'news_sidebar' => ['width' => 320, 'quality' => 100]
+                    'news_sidebar' => ['width' => 320, 'quality' => 100],
+                    'news_inside' => ['width' => 397, 'quality' => 100]
                 ],
             ],
             'Sluggable' => [
