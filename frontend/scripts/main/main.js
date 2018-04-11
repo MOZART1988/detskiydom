@@ -82,11 +82,11 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 
     $('body').on('beforeSubmit', '#sidebar-contact-widget', function(){
         var form = $(this);
-
         $.ajax({
            url: form.attr('action'),
            type: 'POST',
            dataType: 'JSON',
+           data: form.serialize(),
            beforeSend: function () {
 
            },

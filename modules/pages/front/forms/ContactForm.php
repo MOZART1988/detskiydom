@@ -40,6 +40,7 @@ class ContactForm extends Model
 
     public function sendMessage()
     {
+
         if ($this->validate()) {
 
             $body = Html::tag('p', 'Имя: ' . $this->name) .
@@ -53,7 +54,13 @@ class ContactForm extends Model
                 ->setSubject('Новое сообщение с сайта')
                 ->setHtmlBody($body);
 
-            $mail->send();
+
+
+            /*if ($mail->send()) {
+                return true;
+            }
+            echo 1;
+            die;*/
         }
 
         return true;
