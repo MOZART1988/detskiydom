@@ -16,8 +16,8 @@
         <li>
             <a href="">Полезная информация</a>
         </li>
-        <li>
-            <a href="">Живые истории</a>
+        <li class="<?=\Yii::$app->controller->module->id === 'histories' ? 'active' : ''?>">
+            <a href="<?=\yii\helpers\Url::to(['/histories/default/index'])?>">Живые истории</a>
         </li>
         <li>
             <a href="">Контакты</a>

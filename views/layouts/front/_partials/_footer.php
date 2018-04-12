@@ -1,28 +1,10 @@
+<?php
+/**
+ * @var \yii\web\View $this
+*/
+?>
 <footer class="footer">
-    <div class="footer-menu">
-        <div class="container clearfix">
-            <ul>
-                <li>
-                    <a href="">О фонде</a>
-                </li>
-                <li>
-                    <a href="">Пресс-центр</a>
-                </li>
-                <li>
-                    <a href="">Программы фонда</a>
-                </li>
-                <li>
-                    <a href="">Полезная информация</a>
-                </li>
-                <li>
-                    <a href="">Юридическая поддержка</a>
-                </li>
-                <li>
-                    <a href="">Контакты</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <?=$this->render('_footer_menu')?>
     <div class="footer-content">
         <div class="container">
             <div class="footer-left">
@@ -39,3 +21,4 @@
         </div>
     </div>
 </footer>
+

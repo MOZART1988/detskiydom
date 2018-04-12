@@ -90,18 +90,18 @@ class Histories extends ActiveRecord
                 'attribute' => 'image',
                 'scenarios' => ['create', 'update'],
                 'path' => '@webroot/media/pages/{id}',
-                'url' => '@web/media/pages/{id}',
+                'url' => '@web/media/histories/{id}',
                 'thumbs' => [
                     'thumb' => ['width' => 200, 'quality' => 100],
                     'inside' => ['width' => 1200, 'quality' => 100],
-                    'list' => ['width' => 700, 'quality' => 100],
+                    'list' => ['width' => 443, 'quality' => 100],
                 ],
             ],
             [
                 'class' => UploadImageBehavior::class,
                 'attribute' => 'user_image',
                 'scenarios' => ['create', 'update'],
-                'path' => '@webroot/media/pages/{id}',
+                'path' => '@webroot/media/histories/{id}',
                 'url' => '@web/media/pages/{id}',
                 'thumbs' => [
                     'thumb' => ['width' => 200, 'quality' => 100],
