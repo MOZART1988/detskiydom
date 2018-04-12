@@ -33,6 +33,17 @@ $(document).ready(function() {
       slidesPerGroup: 3,
       loopFillGroupWithBlank: true
   });
+
+  let storySwiper = new Swiper('.story-slider .swiper-container', {
+      slidesPerView: 2,
+      spaceBetween: 35,
+      pagination: {
+        el: '.story-slider .swiper-pagination',
+        clickable: true
+      },     
+      slidesPerGroup: 2,
+      loopFillGroupWithBlank: true
+  });
  
 
   let galerySwiper1 = new Swiper('#galery-slider1 .swiper-container', {
