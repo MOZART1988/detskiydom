@@ -23,7 +23,9 @@ class SidebarNewsWidget extends Widget
         $query = Pages::find()->where(['is_active' => 1])->limit(3)->orderBy('RAND()');
 
         if ($this->isProgramm) {
-            $query->andWhere(['is_programm' => 1]);
+            $query->andWhere(['type_id' => Pages::TYPE_PROGRAMM]);
+        } else {
+            $query->andWhere(['type_id' => Pages::TYPE_NEWS]);
         }
 
         $news = $query->all();

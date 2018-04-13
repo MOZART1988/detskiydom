@@ -30,6 +30,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => \yii\grid\SerialColumn::class],
             'title',
             [
+                'attribute' => 'type_id',
+                'value' => function ($data) {
+                    /**
+                     * @var \app\modules\pages\models\Pages $data
+                    */
+
+                    return \app\modules\pages\models\Pages::$types[$data->type_id];
+                },
+                'filter' => \app\modules\pages\models\Pages::$types
+            ],
+            [
                 'class' => \yii\grid\ActionColumn::class,
                 'template' => '{update}{delete}'
             ],

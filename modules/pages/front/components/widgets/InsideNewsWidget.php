@@ -19,7 +19,7 @@ class InsideNewsWidget extends Widget
     {
         parent::run();
 
-        $news = Pages::find()->where(['is_active' => 1, 'is_programm' => 0])
+        $news = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_NEWS])
             ->andWhere(['<>', 'id', $this->id])->limit(6)->all();
 
         if (!$news) {

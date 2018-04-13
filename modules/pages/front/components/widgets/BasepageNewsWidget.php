@@ -18,7 +18,7 @@ class BasepageNewsWidget extends Widget
     {
         parent::run();
 
-        $news = Pages::find()->where(['is_active' => 1, 'is_programm' => 0])->orderBy('RAND()')->limit(8)->all();
+        $news = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_NEWS])->orderBy('RAND()')->limit(8)->all();
 
         if (!$news) {
             return false;

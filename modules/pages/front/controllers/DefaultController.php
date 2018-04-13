@@ -28,14 +28,7 @@ class DefaultController extends MBTController
 
     public function actionNews()
     {
-        $model = new ContactForm();
-
-        if (\Yii::$app->request->isAjax && $model->load(\Yii::$app->request->post()) && $model->sendMessage()) {
-            \Yii::$app->response->format = Response::FORMAT_JSON;
-            return ['success' => true];
-        }
-
-        $query = Pages::find()->where(['is_active' => 1, 'is_programm' => 0]);
+        $query = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_NEWS]);
 
         $countQuery = clone $query;
         $count = $countQuery->count();
@@ -65,5 +58,56 @@ class DefaultController extends MBTController
         }
 
         return $this->render('news-view', ['model' => $model]);
+    }
+
+    public function actionInfo()
+    {
+
+        $query = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_FAQ]);
+
+        $countQuery = clone $query;
+        $count = $countQuery->count();
+
+        $pagination = new Pagination(['totalCount' => $count, 'defaultPageSize' => 7]);
+
+        $info = $query
+            ->limit($pagination->limit)
+            ->offset($pagination->offset)
+            ->orderBy(['create_date' => SORT_DESC])
+            ->all();
+
+        if (!$info) {
+            throw new NotFoundHttpException();
+        }
+
+        return $this->render('info', ['info' => $info, 'pagination' => $pagination]);
+    }
+
+    public function actionInfoView($id)
+    {
+
+        $model = Pages::find()->where(['is_active' => 1, 'id' => $id])->one();
+
+        if ($model === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $otherModels = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_FAQ])->andWhere(['<>', 'id', $model->id])->all();
+
+        return $this->render('info-view', ['otherModels' => $otherModels, 'model' => $model]);
+    }
+
+    public function actionSendForm()
+    {
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $model = new ContactForm();
+
+        if (\Yii::$app->request->isAjax && $model->load(\Yii::$app->request->post()) && $model->sendMessage()) {
+
+            return ['success' => true];
+        }
+
+        return ['success' => false];
     }
 }

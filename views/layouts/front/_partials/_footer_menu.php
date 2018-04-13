@@ -19,8 +19,9 @@
             <li>
                 <a href="">Программы фонда</a>
             </li>
-            <li>
-                <a href="">Полезная информация</a>
+            <li class="<?=(\Yii::$app->controller->module->id === 'pages' && (\Yii::$app->controller->action->id === 'info' ||
+                    \Yii::$app->controller->action->id === 'info-view')) ? 'active' : ''?>">
+                <a href="<?=\yii\helpers\Url::to(['/pages/default/info'])?>">Полезная информация</a>
             </li>
             <li>
                 <a href="">Юридическая поддержка</a>

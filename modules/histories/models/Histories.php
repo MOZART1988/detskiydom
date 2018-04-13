@@ -95,6 +95,7 @@ class Histories extends ActiveRecord
                     'thumb' => ['width' => 200, 'quality' => 100],
                     'inside' => ['width' => 1200, 'quality' => 100],
                     'list' => ['width' => 443, 'quality' => 100],
+                    'top' => ['width' => 567, 'quality' => 100]
                 ],
             ],
             [

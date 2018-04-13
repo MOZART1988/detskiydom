@@ -25,7 +25,7 @@ class PagesSearch extends Pages
     public function rules()
     {
         return [
-            [['id', 'user_id', 'lang_id', 'views', 'is_active', 'category_id'], 'integer'],
+            [['id', 'user_id', 'lang_id', 'views', 'is_active', 'category_id', 'type_id'], 'integer'],
             [
                 ['title', 'short_text', 'text', 'sefname', 'pub_date', 'pub_date_from', 'pub_date_to', 'status_id'],
                 'safe'
@@ -75,31 +75,9 @@ class PagesSearch extends Pages
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
-            'pages.lang_id' => $this->lang_id,
-            'pub_date' => $this->pub_date,
-            'views' => $this->views,
             'pages.is_active' => $this->is_active,
+            'pages.type_id' => $this->type_id
         ]);
-
-        if (!empty($this->status_id)) {
-            $query->andWhere(['status_id' => $this->status_id]);
-        }
-
-        if (!empty($this->pub_date_from)) {
-            $query->andWhere('pub_date>=:from_date', [':from_date' => $this->pub_date_from]);
-        }
-
-        if (!empty($this->pub_date_to)) {
-            $query->andWhere('pub_date<=:to_date', [':to_date' => $this->pub_date_to]);
-        }
-
-
-
-        if (!empty($this->category_id)) {
-            $query->joinWith('categories');
-            $query->andWhere(['categories.id' => $this->category_id]);
-        }
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'short_text', $this->short_text])

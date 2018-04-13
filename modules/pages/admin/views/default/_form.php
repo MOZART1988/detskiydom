@@ -36,7 +36,7 @@ use yii\widgets\ActiveForm;
                 <?= Html::img($model->getThumbUploadUrl('image', 'thumb'), ['class' => 'img-thumbnail']) ?>
             <?php endif; ?>
 
-            <?= $form->field($model, 'is_programm')->checkbox()?>
+            <?= $form->field($model, 'type_id')->dropDownList(\app\modules\pages\models\Pages::$types)?>
 
             <?= $form->field($model, 'is_active')->checkbox()?>
 

@@ -14,7 +14,7 @@ use mongosoft\file\UploadImageBehavior;
  * This is the model class for table "pages".
  *
  * @property integer $id
- * @property integer $is_programm
+ * @property integer $type_id
  * @property string $title
  * @property string $short_text
  * @property string $text
@@ -26,6 +26,16 @@ use mongosoft\file\UploadImageBehavior;
  */
 class Pages extends ActiveRecord
 {
+    const TYPE_NEWS = 1;
+    const TYPE_PROGRAMM = 2;
+    const TYPE_FAQ = 3;
+
+    public static $types = [
+        self::TYPE_NEWS => 'Новости',
+        self::TYPE_PROGRAMM => 'Программы',
+        self::TYPE_FAQ => 'Полезная информация'
+    ];
+
     /**
      * @inheritdoc
      */
@@ -39,8 +49,7 @@ class Pages extends ActiveRecord
      */
     public static function find()
     {
-        $query = new PagesQuery(get_called_class());
-        return $query;
+        return new PagesQuery(get_called_class());
     }
 
     /**
@@ -55,7 +64,7 @@ class Pages extends ActiveRecord
             [
                 [
                     'is_active',
-                    'is_programm'
+                    'type_id'
                 ],
                 'integer'
             ],
@@ -87,7 +96,7 @@ class Pages extends ActiveRecord
             'sefname' => Yii::t('pages', 'ЧПУ'),
             'is_active' => Yii::t('pages', 'Активность'),
             'image' => Yii::t('admin', 'Изображение'),
-            'is_programm' => Yii::t('admin', 'Программа фонда')
+            'type_id' => Yii::t('admin', 'Тип статьи')
         ];
     }
 

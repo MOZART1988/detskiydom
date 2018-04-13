@@ -27,6 +27,8 @@ $result = [
                     'news' => 'pages/default/news',
                     'news/<id>' => 'pages/default/news-view',
                     'histories' => 'histories/default/index',
+                    'info' => 'pages/default/info',
+                    'info/<id>' => 'pages/default/info-view',
                     [
                         'pattern' => 'sitemap',
                         'route' => 'pages/default/sitemap',

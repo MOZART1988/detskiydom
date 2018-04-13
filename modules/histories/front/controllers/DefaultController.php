@@ -20,14 +20,13 @@ class DefaultController extends MBTController
 {
     public function actionIndex()
     {
-        $model = new ContactForm();
+        $topHistory = Histories::find()->where(['is_active' => 1])->orderBy(['create_date' => SORT_DESC])->one();
 
-        if (\Yii::$app->request->isAjax && $model->load(\Yii::$app->request->post()) && $model->sendMessage()) {
-            \Yii::$app->response->format = Response::FORMAT_JSON;
-            return ['success' => true];
+        if ($topHistory === null) {
+            throw new NotFoundHttpException();
         }
 
-        $query = Histories::find()->where(['is_active' => 1]);
+        $query = Histories::find()->where(['is_active' => 1])->andWhere(['<>', 'id', $topHistory->id]);
 
         $countQuery = clone $query;
         $count = $countQuery->count();
@@ -44,6 +43,6 @@ class DefaultController extends MBTController
             throw new NotFoundHttpException();
         }
 
-        return $this->render('index', ['histories' => $histories, 'pagination' => $pagination]);
+        return $this->render('index', ['histories' => $histories, 'pagination' => $pagination, 'topHistory' => $topHistory]);
     }
 }

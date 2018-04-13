@@ -45,9 +45,9 @@ class BreadcumsWidget extends Widget
                 switch (\Yii::$app->controller->action->id) {
                     case 'news':
                         $result[] = 'Новости';
-                    break;
+                        break;
                     case 'news-view':
-                        $result[] = '<a href="/news">Новости</a>';
+                        $result[] = '<a href="/news/">Новости</a>';
 
                         $newsId = \Yii::$app->request->get('id');
                         $model = Pages::findOne($newsId);
@@ -55,8 +55,26 @@ class BreadcumsWidget extends Widget
                         if ($model !== null) {
                             $result[] = $model->title;
                         }
+                        break;
+                    case 'info-view':
+                        $result[] = '<a href="/info/">Полезная информация</a>';
 
-                    break;
+                        $newsId = \Yii::$app->request->get('id');
+                        $model = Pages::findOne($newsId);
+
+                        if ($model !== null) {
+                            $result[] = $model->title;
+                        }
+                        break;
+                    case 'info':
+                        $result[] = 'Полезная информация';
+                        break;
+                }
+            break;
+            case 'histories':
+                switch(\Yii::$app->controller->action->id) {
+                    case 'index':
+                        $result[] = 'Живые истории';
                 }
             break;
         }
