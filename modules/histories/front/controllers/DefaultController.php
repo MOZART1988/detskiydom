@@ -45,4 +45,18 @@ class DefaultController extends MBTController
 
         return $this->render('index', ['histories' => $histories, 'pagination' => $pagination, 'topHistory' => $topHistory]);
     }
+
+    public function actionView($id)
+    {
+        $history = Histories::find()->where(['is_active' => 1, 'id' => $id])->one();
+
+        if ($history === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $otherHistories = Histories::find()->where(['is_active' => 1])->andWhere(['<>', 'id', $this->id])
+            ->orderBy('RAND()')->limit(4)->all();
+
+        return $this->render('view', ['history' => $history, 'otherHistories' => $otherHistories]);
+    }
 }
