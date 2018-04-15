@@ -60,6 +60,19 @@
 		height: 46px;
 		line-height: 34px;
 	}
+	&.btn--big {
+		background: #f07c00;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 24px;
+		letter-spacing: .5px;
+		padding: 30px 110px;
+		margin-bottom: 40px;
+		&:hover {
+			color: #fff;
+			background: #fecc00;
+		}
+	}
 }
 
 .btn--primary {
