@@ -1,4 +1,70 @@
-
 .modal {
-	// styles
+  // styles
+}
+
+.modal-content {
+  border-radius: 0;
+}
+
+.modal-header {
+  padding: 30px 50px 10px;
+  border-bottom: 0;
+}
+
+.modal-body {
+  padding: 0px 50px 50px;
+  border-bottom: 0;
+}
+
+.quiz-rezult {
+  display: flex;
+}
+
+.quiz-answer {
+  flex-shrink: 0;
+  width: 155px;
+  margin-bottom: 10px;
+}
+
+.quiz-answer--value {
+  display: flex;
+  span {
+    width: 50px;
+    ;
+  }
+}
+
+.quiz-answer--progress {
+  width: 350px;
+  .progress-filled {
+    height: 11px;
+    &.first {
+      background: #f07c00
+    }
+    &.second {
+      background: #f39633;
+    }
+    &.third {
+      background: #f9cb99;
+    }
+  }
+}
+
+button.close {
+  background: url(../images/fancy-close.png) center no-repeat;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  outline: none;
+  padding: 10px;
+  transition: color .2s;
+  vertical-align: top;
+  width: 54px;
+  height: 43px;
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  right: 20px;
 }
