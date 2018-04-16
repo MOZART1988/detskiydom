@@ -30,10 +30,19 @@ class Pages extends ActiveRecord
     const TYPE_PROGRAMM = 2;
     const TYPE_FAQ = 3;
 
+    const BACKGROUND_GREEN = 'green_prog';
+    const BACKGROUND_BLUE = 'blue_prog';
+    const BACKGROUND_ORANGE = 'orange_prog';
+    const BACKGROUND_PINK = 'pink_prog';
+
     public static $types = [
         self::TYPE_NEWS => 'Новости',
         self::TYPE_PROGRAMM => 'Программы',
         self::TYPE_FAQ => 'Полезная информация'
+    ];
+
+    public static $backgroundColors = [
+        self::BACKGROUND_BLUE, self::BACKGROUND_GREEN, self::BACKGROUND_ORANGE, self::BACKGROUND_PINK
     ];
 
     /**

@@ -23,12 +23,14 @@ $result = [
                 'showScriptName' => false,
                 'suffix' => '/',
                 'rules' => [
+                    'contact' => 'content/default/contact',
                     'content/<id>' => 'content/default/view',
                     'news' => 'pages/default/news',
                     'news/<id>' => 'pages/default/news-view',
                     'histories' => 'histories/default/index',
                     'info' => 'pages/default/info',
                     'info/<id>' => 'pages/default/info-view',
+                    'programms' => 'pages/default/programms',
                     [
                         'pattern' => 'sitemap',
                         'route' => 'pages/default/sitemap',

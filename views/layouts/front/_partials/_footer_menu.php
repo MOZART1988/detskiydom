@@ -16,8 +16,9 @@
                     \Yii::$app->controller->action->id === 'news-view')) ? 'active' : ''?>">
                 <a href="<?=\yii\helpers\Url::to(['/pages/default/news'])?>">Пресс-центр</a>
             </li>
-            <li>
-                <a href="">Программы фонда</a>
+            <li class="<?=(\Yii::$app->controller->module->id === 'pages' && (\Yii::$app->controller->action->id === 'programms' ||
+                    \Yii::$app->controller->action->id === 'programm-view')) ? 'active' : ''?>">
+                <a href="<?=\yii\helpers\Url::to(['/pages/default/programms'])?>">Программы фонда</a>
             </li>
             <li class="<?=(\Yii::$app->controller->module->id === 'pages' && (\Yii::$app->controller->action->id === 'info' ||
                     \Yii::$app->controller->action->id === 'info-view')) ? 'active' : ''?>">
@@ -26,8 +27,8 @@
             <li>
                 <a href="">Юридическая поддержка</a>
             </li>
-            <li>
-                <a href="">Контакты</a>
+            <li class="<?=(\Yii::$app->controller->module->id === 'content' && \Yii::$app->controller->action->id === 'contact') ? 'active' : ''?>">
+                <a href="<?=\yii\helpers\Url::to(['/content/default/contact/'])?>">Контакты</a>
             </li>
         </ul>
     </div>

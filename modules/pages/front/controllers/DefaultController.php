@@ -60,6 +60,28 @@ class DefaultController extends MBTController
         return $this->render('news-view', ['model' => $model]);
     }
 
+    public function actionProgramms()
+    {
+        $query = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_PROGRAMM]);
+
+        $countQuery = clone $query;
+        $count = $countQuery->count();
+
+        $pagination = new Pagination(['totalCount' => $count, 'defaultPageSize' => 7]);
+
+        $programms = $query
+            ->limit($pagination->limit)
+            ->offset($pagination->offset)
+            ->orderBy(['create_date' => SORT_DESC])
+            ->all();
+
+        if (!$programms) {
+            throw new NotFoundHttpException();
+        }
+
+        return $this->render('programms', ['programms' => $programms, 'pagination' => $pagination]);
+    }
+
     public function actionInfo()
     {
 

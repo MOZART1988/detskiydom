@@ -29,15 +29,21 @@ class BreadcumsWidget extends Widget
 
         switch (\Yii::$app->controller->module->id) {
             case 'content' :
+                switch (\Yii::$app->controller->action->id) {
+                    case 'view':
+                        $contentId = \Yii::$app->request->get('id');
 
-                $contentId = \Yii::$app->request->get('id');
+                        if ($contentId) {
+                            $model = Content::findOne($contentId);
 
-                if ($contentId) {
-                    $model = Content::findOne($contentId);
-
-                    if ($model !== null) {
-                        $result[] = $model->title;
-                    }
+                            if ($model !== null) {
+                                $result[] = $model->title;
+                            }
+                        }
+                        break;
+                    case 'contact':
+                        $result[] = 'Контакты';
+                    break;
                 }
 
             break;
@@ -68,6 +74,9 @@ class BreadcumsWidget extends Widget
                         break;
                     case 'info':
                         $result[] = 'Полезная информация';
+                        break;
+                    case 'programms':
+                        $result[] = 'Программы фонда';
                         break;
                 }
             break;

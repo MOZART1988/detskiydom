@@ -27,4 +27,9 @@ class DefaultController extends MBTController
 
         return $this->render('view', ['content' => $content, 'goals' => $goals]);
     }
+
+    public function actionContact()
+    {
+        return $this->render('contact');
+    }
 }
