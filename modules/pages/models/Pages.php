@@ -23,6 +23,8 @@ use mongosoft\file\UploadImageBehavior;
  * @property string $update_date
  * @property string $image
  * @property string $sefname
+ *
+ * @property Pages $next
  */
 class Pages extends ActiveRecord
 {
@@ -145,5 +147,10 @@ class Pages extends ActiveRecord
                 'immutable' => true
             ],
         ];
+    }
+
+    public function getNext()
+    {
+        return $this::find()->where(['is_active' => 1])->andWhere(['>', 'id', $this->id])->one();
     }
 }
