@@ -43,6 +43,8 @@ class DefaultController extends MBTController
             throw new NotFoundHttpException();
         }
 
+        $this->setMeta(\Yii::t('front', 'Живые истории'));
+
         return $this->render('index', ['histories' => $histories, 'pagination' => $pagination, 'topHistory' => $topHistory]);
     }
 
@@ -56,6 +58,8 @@ class DefaultController extends MBTController
 
         $otherHistories = Histories::find()->where(['is_active' => 1])->andWhere(['<>', 'id', $this->id])
             ->orderBy('RAND()')->limit(4)->all();
+
+        $this->setMeta($history->title);
 
         return $this->render('view', ['history' => $history, 'otherHistories' => $otherHistories]);
     }

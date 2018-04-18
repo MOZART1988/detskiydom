@@ -25,11 +25,14 @@ class DefaultController extends MBTController
 
         $goals = !empty($content->goals) ? explode("\n", $content->goals) : [];
 
+        $this->setMeta($content->title);
+
         return $this->render('view', ['content' => $content, 'goals' => $goals]);
     }
 
     public function actionContact()
     {
+        $this->setMeta(\Yii::t('front', 'Контакты'));
         return $this->render('contact');
     }
 }
