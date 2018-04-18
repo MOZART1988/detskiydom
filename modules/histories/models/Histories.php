@@ -104,7 +104,7 @@ class Histories extends ActiveRecord
                 'class' => PreviewBehaviour::class,
                 'attribute' => 'image',
                 'previews' => [
-                    [558, 558],
+                    [558, 389],
                     [436, 304],
                     [425, 296]
                 ]

@@ -26,9 +26,9 @@
                     <h3><?=\Yii::t('front', 'Другие истории')?></h3>
                     <!-- Slider main container -->
                     <div class="swiper-container">
-                        <?php foreach ($otherHistories as $item) : ?>
-                            <!-- Additional required wrapper -->
-                            <div class="swiper-wrapper">
+                        <div class="swiper-wrapper">
+                            <?php foreach ($otherHistories as $item) : ?>
+                                <!-- Additional required wrapper -->
                                 <!-- Slides -->
                                 <div class="swiper-slide news-item">
                                     <a href="<?=\yii\helpers\Url::to(['/histories/default/view', 'id' => $item->id])?>">
@@ -49,9 +49,9 @@
                                         <span><?=$item->user_fio?></span>
                                     </div>
                                 </div>
-                            </div>
-                        <?php endforeach ; ?>
-                        <!-- If we need pagination -->
+                            <?php endforeach ; ?>
+                            <!-- If we need pagination -->
+                        </div>
                         <div class="swiper-pagination"></div>
                     </div>
                 </div>
