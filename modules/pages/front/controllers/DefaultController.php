@@ -45,7 +45,7 @@ class DefaultController extends MBTController
             throw new NotFoundHttpException();
         }
 
-        $this->setMeta('Íîâîñòè');
+        $this->setMeta('ÐÐ¾Ð²Ð¾ÑÑ‚Ð¸');
 
         return $this->render('news', ['news' => $news, 'pagination' => $pagination]);
     }
@@ -83,7 +83,7 @@ class DefaultController extends MBTController
             throw new NotFoundHttpException();
         }
 
-        $this->setMeta(\Yii::t('front', 'Ïðîãðàììû'));
+        $this->setMeta(\Yii::t('front', 'ÐŸÑ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹'));
 
         return $this->render('programms', ['programms' => $programms, 'pagination' => $pagination]);
     }
@@ -108,7 +108,7 @@ class DefaultController extends MBTController
             throw new NotFoundHttpException();
         }
 
-        $this->setMeta(\Yii::t('front', 'Ïîëåçíàÿ èíôîðìàöèÿ'));
+        $this->setMeta(\Yii::t('front', 'ÐŸÐ¾Ð»ÐµÐ·Ð½Ð°Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ'));
 
         return $this->render('info', ['info' => $info, 'pagination' => $pagination]);
     }

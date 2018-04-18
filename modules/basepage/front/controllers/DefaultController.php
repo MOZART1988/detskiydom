@@ -11,13 +11,13 @@ class DefaultController extends MBTController
 
     public function actionIndex()
     {
-        $this->setMeta(\Yii::t('front', 'Ãëàâíàÿ'));
+        $this->setMeta(\Yii::t('front', 'Ğ“Ğ»Ğ°Ğ²Ğ½Ğ°Ñ'));
         return $this->render('index');
     }
 
     public function actionError()
     {
-        $this->setMeta(\Yii::t('front', 'Ñòğàíèöà íå íàéäåíà'));
+        $this->setMeta(\Yii::t('front', 'Ğ¡Ñ‚Ñ€Ğ°Ğ½Ğ¸Ñ†Ğ° Ğ½Ğµ Ğ½Ğ°Ğ¹Ğ´ĞµĞ½Ğ°'));
         return $this->render('error');
     }
 }

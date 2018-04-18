@@ -43,7 +43,7 @@ class DefaultController extends MBTController
             throw new NotFoundHttpException();
         }
 
-        $this->setMeta(\Yii::t('front', 'Æèâûå èñòîðèè'));
+        $this->setMeta(\Yii::t('front', 'Ð–Ð¸Ð²Ñ‹Ðµ Ð¸ÑÑ‚Ð¾Ñ€Ð¸Ð¸'));
 
         return $this->render('index', ['histories' => $histories, 'pagination' => $pagination, 'topHistory' => $topHistory]);
     }

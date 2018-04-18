@@ -54,13 +54,13 @@ class MBTController extends Controller
             return;
         }
 
-        $this->getView()->title = $title . ' &mdash; ' . Config::getParamValue('sitename');
+        $this->getView()->title = $title . ' - ' . 'Кунбала';
 
         if ($image && mb_strpos($image, '//') === false) {
-            $image = Url::host() . $url;
+            $image = $_SERVER['HTTP_HOST'] . $url;
         }
         if ($url && mb_strpos($url, '//') === false) {
-            $url = Url::host() . $url;
+            $url = $_SERVER['HTTP_HOST'] . $url;
         }
         $properties = ArrayHelper::merge([
             'og:title' => $title,
@@ -68,13 +68,7 @@ class MBTController extends Controller
             'og:image' => $image,
         ], $rest);
 
-        if (empty($description)) {
-            $description = Config::getParamValue('meta_description', '');
-        }
-
-        if (empty($meta_keywords)) {
-            $meta_keywords = Config::getParamValue('meta_keywords', '');
-        }
+        
 
         $seoMeta = ['description' => $description, 'keywords' => $meta_keywords];
 

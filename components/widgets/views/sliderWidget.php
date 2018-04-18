@@ -24,7 +24,7 @@
                         <!-- Slides -->
                         <?php foreach ($slider->images as $image) : ?>
                             <div class="swiper-slide">
-                                <img src="<?=$image->getImageUrl('_660x357_')?>" alt=""> </div>
+                                <img src="<?=$image->getImageUrl()?>" alt=""> </div>
                         <?php endforeach ; ?>
                     </div>
                 </div>
