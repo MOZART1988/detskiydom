@@ -14,11 +14,15 @@
                 <div class="swiper-slide news-item">
                     <?php if ($isProgramm) : ?>
                         <a href="<?=\yii\helpers\Url::to(['/pages/default/programm-view', 'id' => $item->id])?>">
-                            <?=\yii\helpers\Html::img($item->getThumbUploadUrl('image', 'news_sidebar'))?>
+                            <?=\yii\helpers\Html::img(
+                                    \app\components\behaviors\PreviewBehaviour::getImageUrl(
+                                            'pages', $item->image, $item->id, '_310x216'))?>
                         </a>
                     <?php else : ?>
                         <a href="<?=\yii\helpers\Url::to(['/pages/default/news-view', 'id' => $item->id])?>">
-                            <?=\yii\helpers\Html::img($item->getThumbUploadUrl('image', 'news_sidebar'))?>
+                            <?=\yii\helpers\Html::img(
+                                \app\components\behaviors\PreviewBehaviour::getImageUrl(
+                                    'pages', $item->image, $item->id, '_310x216'))?>
                         </a>
                     <?php endif; ?>
                     <div class="news-title">
