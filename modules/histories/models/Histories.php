@@ -9,6 +9,7 @@
 namespace app\modules\histories\models;
 
 
+use app\components\behaviors\PreviewBehaviour;
 use mongosoft\file\UploadImageBehavior;
 use mtemplate\mclasses\ActiveRecord;
 use yii\behaviors\SluggableBehavior;
@@ -89,25 +90,31 @@ class Histories extends ActiveRecord
                 'class' => UploadImageBehavior::class,
                 'attribute' => 'image',
                 'scenarios' => ['create', 'update'],
-                'path' => '@webroot/media/pages/{id}',
+                'path' => '@webroot/media/histories/{id}',
                 'url' => '@web/media/histories/{id}',
-                'thumbs' => [
-                    'thumb' => ['width' => 200, 'quality' => 100],
-                    'inside' => ['width' => 1200, 'quality' => 100],
-                    'list' => ['width' => 443, 'quality' => 100],
-                    'top' => ['width' => 567, 'quality' => 100]
-                ],
             ],
             [
                 'class' => UploadImageBehavior::class,
                 'attribute' => 'user_image',
                 'scenarios' => ['create', 'update'],
                 'path' => '@webroot/media/histories/{id}',
-                'url' => '@web/media/pages/{id}',
-                'thumbs' => [
-                    'thumb' => ['width' => 200, 'quality' => 100],
-                    'small' => ['width' => 50, 'quality' => 50],
-                ],
+                'url' => '@web/media/histories/{id}',
+            ],
+            [
+                'class' => PreviewBehaviour::class,
+                'attribute' => 'image',
+                'previews' => [
+                    [558, 558],
+                    [436, 304],
+                    [885, 559]
+                ]
+            ],
+            [
+                'class' => PreviewBehaviour::class,
+                'attribute' => 'user_image',
+                'previews' => [
+                    [50, 50],
+                ]
             ],
             'Sluggable' => [
                 'class' => SluggableBehavior::class,
