@@ -26,16 +26,18 @@ class PreviewBehaviour extends Behavior
 
     public function createPreview()
     {
-        foreach ($this->previews as $sizes) {
-            $suffix = '_' . $sizes[0] . 'x' . $sizes[1];
-            if (!is_file($this->getDirectoryPath() . '/' . $suffix . '_' . $this->getImageName())) {
-                try {
-                    \yii\imagine\Image::thumbnail($this->getFullImagePath(),
-                        $sizes[0], $sizes[1], ManipulatorInterface::THUMBNAIL_INSET
-                    )->save($this->getDirectoryPath() . '/' . $suffix . '_' . $this->getImageName(), ['quality' => 100]);
-                } catch (\Exception $e) {
-                    print_r($e->getMessage());
-                    exit;
+        if ($this->owner->{$this->attribute}) {
+            foreach ($this->previews as $sizes) {
+                $suffix = '_' . $sizes[0] . 'x' . $sizes[1];
+                if (!is_file($this->getDirectoryPath() . '/' . $suffix . '_' . $this->getImageName())) {
+                    try {
+                        \yii\imagine\Image::thumbnail($this->getFullImagePath(),
+                            $sizes[0], $sizes[1], ManipulatorInterface::THUMBNAIL_INSET
+                        )->save($this->getDirectoryPath() . '/' . $suffix . '_' . $this->getImageName(), ['quality' => 100]);
+                    } catch (\Exception $e) {
+                        print_r($e->getMessage());
+                        exit;
+                    }
                 }
             }
         }

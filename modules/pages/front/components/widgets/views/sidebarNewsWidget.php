@@ -16,13 +16,13 @@
                         <a href="<?=\yii\helpers\Url::to(['/pages/default/programm-view', 'id' => $item->id])?>">
                             <?=\yii\helpers\Html::img(
                                     \app\components\behaviors\PreviewBehaviour::getImageUrl(
-                                            'pages', $item->image, $item->id, '_310x216'))?>
+                                            'pages', $item->image, $item->id, '_310x216_'))?>
                         </a>
                     <?php else : ?>
                         <a href="<?=\yii\helpers\Url::to(['/pages/default/news-view', 'id' => $item->id])?>">
                             <?=\yii\helpers\Html::img(
                                 \app\components\behaviors\PreviewBehaviour::getImageUrl(
-                                    'pages', $item->image, $item->id, '_310x216'))?>
+                                    'pages', $item->image, $item->id, '_310x216_'))?>
                         </a>
                     <?php endif; ?>
                     <div class="news-title">

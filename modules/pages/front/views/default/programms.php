@@ -12,7 +12,7 @@
                 <?php foreach ($programms as $programm) : ?>
                     <div class="programm-item <?=\app\modules\pages\models\Pages::$backgroundColors[mt_rand(0, 3)]?>">
                         <?=\yii\helpers\Html::img(\app\components\behaviors\PreviewBehaviour::getImageUrl(
-                                'pages', $programm->image, $programm->id, '_398x277'))?>
+                                'pages', $programm->image, $programm->id, '_398x277_'))?>
                         <div class="overlay">
                             <a href="<?=\yii\helpers\Url::to(['programm-view', 'id' => $programm->id])?>">
                                 <span><?=$programm->title?></span>
