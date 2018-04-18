@@ -106,7 +106,7 @@ class Histories extends ActiveRecord
                 'previews' => [
                     [558, 558],
                     [436, 304],
-                    [885, 559]
+                    [425, 296]
                 ]
             ],
             [

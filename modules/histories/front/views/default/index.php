@@ -13,7 +13,9 @@
             <div class="stories-list">
                 <div class="top-story-item">
                     <a href="<?=\yii\helpers\Url::to(['/histories/default/view', 'id' => $topHistory->id])?>">
-                        <?=\yii\helpers\Html::img($topHistory->getThumbUploadUrl('image', 'top'))?>
+                        <?=\yii\helpers\Html::img(
+                            \app\components\behaviors\PreviewBehaviour::getImageUrl(
+                                'histories', $topHistory->image, $topHistory->id, '_558x389_'))?>
                         <div class="top-story-text">
                             <div class="top-story-title"> <?=$topHistory->title?> </div>
                             <p> <?=$topHistory->short_text?> </p>
@@ -23,7 +25,9 @@
                 <?php foreach ($histories as $item) : ?>
                     <div class="news-item">
                         <a href="<?=\yii\helpers\Url::to(['/histories/default/view', 'id' => $item->id])?>">
-                            <?=\yii\helpers\Html::img($item->getThumbUploadUrl('image', 'list'))?>
+                            <?=\yii\helpers\Html::img(
+                                \app\components\behaviors\PreviewBehaviour::getImageUrl(
+                                    'histories', $item->image, $item->id, '_436x304_'))?>
                         </a>
                         <div class="news-title">
                             <a href="<?=\yii\helpers\Url::to(['/histories/default/view', 'id' => $item->id])?>">
@@ -32,7 +36,9 @@
                         </div>
                         <div class="news-text"><?=$item->short_text?></div>
                         <div class="news-author">
-                            <?=\yii\helpers\Html::img($item->getThumbUploadUrl('user_image', 'small'))?>
+                            <?=\yii\helpers\Html::img(
+                                \app\components\behaviors\PreviewBehaviour::getImageUrl(
+                                    'histories', $item->user_image, $item->id, '_50x50_'))?>
                             <span><?=$item->user_fio?></span>
                         </div>
                     </div>
