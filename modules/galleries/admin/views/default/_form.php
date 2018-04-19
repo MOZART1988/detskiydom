@@ -47,7 +47,7 @@ $form->field($model, 'files[]')->widget(\kartik\file\FileInput::className(), [
                 . '<div class="file-footer-caption" title="{caption}">'
                 . '<div class="file-caption-info">{caption}</div>'
                 . '<div class="file-size-info">{size}</div>'
-                . '<input id="{id}" class="kv-input kv-init form-control input-sm form-control-sm text-center {TAG_CSS_INIT}" value="{description}" placeholder="Enter caption...">'
+                . '<input id="{id}" class="kv-input kv-init form-control input-sm form-control-sm text-center {TAG_CSS_INIT}" value="{description}" placeholder="Описание...">'
                 . '</div>'
                 . '{progress}{indicator}{actions}'
                 . '</div>'
