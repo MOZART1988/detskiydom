@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \app\modules\galleries\models\Galleries $gallery
- * @var \app\modules\galleries\models\Galleries $videoGallery
+ * @var \app\modules\videos\models\Videos[] $videoGallery
  */
 ?>
 <div class="galery-container">
@@ -48,11 +48,12 @@
                     <div class="swiper-container">
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
-                            <?php foreach ($videoGallery->images as $image) : ?>
+                            <?php foreach ($videoGallery as $item) : ?>
                                 <div class="swiper-slide">
                                     <div class="galery-item galery-item<?=mt_rand(1, 3)?>">
                                         <a href="">
-                                            <div class="galery-image" style="background-image: url(<?=$image->getImageUrl('_660x357_')?>);"></div>
+                                            <div class="galery-image" style="background-image: url(<?=\app\components\behaviors\PreviewBehaviour::getImageUrl(
+                                                    'videos', $item->image, $item->id, '_660x357_')?>);"></div>
                                         </a>
                                     </div>
                                 </div>

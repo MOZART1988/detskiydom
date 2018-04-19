@@ -1,9 +1,9 @@
 <?php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=srv-db-plesk13.ps.kz:3306;dbname=kunbalak_test',
-    'username' => 'kunba_wfwdave',
-    'password' => 'my5Tu0!2',
+    'dsn' => 'mysql:host=localhost;dbname=dom',
+    'username' => 'root',
+    'password' => '',
     'charset' => 'utf8',
     // Schema cache options (for production environment)
     //'enableSchemaCache' => true,

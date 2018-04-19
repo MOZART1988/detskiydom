@@ -95,6 +95,10 @@ $current_user = \app\modules\users\models\Users::findOne(\Yii::$app->getUser()->
                                             [
                                                 'label' => 'Галереи',
                                                 'url' => ['/galleries/default/index']
+                                            ],
+                                            [
+                                                'label' => 'Видео',
+                                                'url' => ['/videos/default/index']
                                             ]
                                         ]
                                     ],

@@ -58,6 +58,9 @@ $result = [
             ],
             'histories' => [
                 'class' => \app\modules\histories\Module::class
+            ],
+            'videos' => [
+                'class' => \app\modules\videos\Module::class
             ]
         ],
         'components' => [
@@ -66,7 +69,7 @@ $result = [
                 'cookieValidationKey' => 'sdfepioDzxqwf3246dfgkljdsa'
             ],
             'cache' => [
-                'class' => 'yii\caching\FileCache'
+                'class' => \yii\caching\FileCache::class
             ],
             'urlManager' => [
                 'enablePrettyUrl' => true,
