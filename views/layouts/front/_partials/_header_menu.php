@@ -3,7 +3,7 @@
         <li class="<?=(\Yii::$app->request->url === '/') ? 'active' : ''?>">
             <a href="<?=\yii\helpers\Url::to(['/basepage/default/index'])?>">Главная</a>
         </li>
-        <li class="<?=(\Yii::$app->controller->module->id === 'content' && \Yii::$app->controller->action->id === 'view') ? 'active' : ''?>">
+        <li class="<?=(\Yii::$app->controller->module->id === 'content' && \Yii::$app->controller->action->id === 'view' && (\Yii::$app->request->get('id') === '2')) ? 'active' : ''?>">
             <a href="<?=\yii\helpers\Url::to(['/content/default/view', 'id' => 1])?>">О фонде</a>
         </li>
         <li class="<?=(\Yii::$app->controller->module->id === 'pages' && (\Yii::$app->controller->action->id === 'news' ||

@@ -31,10 +31,8 @@
                     'options' => [
                         'class' => false,
                     ],
-                    'prevPageLabel' => \Yii::t('front', 'предыдущее'),
-                    'nextPageLabel' => \Yii::t('front', 'следующее'),
-                    'prevPageCssClass' => 'prev-link',
-                    'nextPageCssClass' => 'next-link'
+                    'prevPageLabel' => false,
+                    'nextPageLabel' => false,
                 ])?>
             </nav>
         </section>

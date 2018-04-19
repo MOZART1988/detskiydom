@@ -31,7 +31,7 @@
                 </a>
             </div>
             <div class="header-right">
-                <a href="<?=\yii\helpers\Url::to(['/content/default/view', 'id' => 3])?>" class="btn btn--orange"> Сделайте свой вклад </a>
+                <a href="<?=\yii\helpers\Url::to(['/content/default/view', 'id' => 2])?>" class="btn btn--orange"> Сделайте свой вклад </a>
                 <a href="" class="btn btn--orangelight"> Участвуйте в опросе </a>
             </div>
         </div>

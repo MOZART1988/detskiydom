@@ -88,6 +88,19 @@ class DefaultController extends MBTController
         return $this->render('programms', ['programms' => $programms, 'pagination' => $pagination]);
     }
 
+    public function actionProgrammsView($id)
+    {
+        $model = Pages::find()->where(['is_active' => 1, 'id' => $id])->one();
+
+        if ($model === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $this->setMeta($model->title);
+
+        return $this->render('programms-view', ['model' => $model]);
+    }
+
     public function actionInfo()
     {
 
