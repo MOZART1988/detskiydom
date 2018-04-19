@@ -51,7 +51,7 @@
                             <?php foreach ($videoGallery as $item) : ?>
                                 <div class="swiper-slide">
                                     <div class="galery-item galery-item<?=mt_rand(1, 3)?>">
-                                        <a href="<?=$item->youtube_video?>" data-fancybox="gallery">
+                                        <a href="<?=$item->youtube_video?>" data-fancybox="videogallery" data-caption="<?=$item->description?>">
                                             <div class="galery-image" style="background-image: url(<?=\app\components\behaviors\PreviewBehaviour::getImageUrl(
                                                     'videos', $item->image, $item->id, '_660x357_')?>);"></div>
                                         </a>
