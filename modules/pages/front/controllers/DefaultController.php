@@ -45,6 +45,8 @@ class DefaultController extends MBTController
             throw new NotFoundHttpException();
         }
 
+        $this->setMeta('Новости');
+
         return $this->render('news', ['news' => $news, 'pagination' => $pagination]);
     }
 
@@ -56,6 +58,8 @@ class DefaultController extends MBTController
         if ($model === null) {
             throw new NotFoundHttpException();
         }
+
+        $this->setMeta($model->title);
 
         return $this->render('news-view', ['model' => $model]);
     }
@@ -78,6 +82,8 @@ class DefaultController extends MBTController
         if (!$programms) {
             throw new NotFoundHttpException();
         }
+
+        $this->setMeta(\Yii::t('front', 'Программы'));
 
         return $this->render('programms', ['programms' => $programms, 'pagination' => $pagination]);
     }
@@ -102,6 +108,8 @@ class DefaultController extends MBTController
             throw new NotFoundHttpException();
         }
 
+        $this->setMeta(\Yii::t('front', 'Полезная информация'));
+
         return $this->render('info', ['info' => $info, 'pagination' => $pagination]);
     }
 
@@ -115,6 +123,8 @@ class DefaultController extends MBTController
         }
 
         $otherModels = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_FAQ])->andWhere(['<>', 'id', $model->id])->all();
+
+        $this->setMeta($model->title);
 
         return $this->render('info-view', ['otherModels' => $otherModels, 'model' => $model]);
     }

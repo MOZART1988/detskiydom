@@ -12,7 +12,8 @@
                 <?php foreach ($news as $item) : ?>
                     <div class="news-item">
                         <a href="<?=\yii\helpers\Url::to(['/pages/default/news-view', 'id' => $item->id])?>">
-                            <?=\yii\helpers\Html::img($item->getThumbUploadUrl('image', 'news_sidebar'))?>
+                            <?=\yii\helpers\Html::img(\app\components\behaviors\PreviewBehaviour::getImageUrl(
+                                'pages', $item->image, $item->id, '_261x182_'))?>
                         </a>
                         <div class="news-title">
                             <a href="<?=\yii\helpers\Url::to(['/pages/default/news-view', 'id' => $item->id])?>">
