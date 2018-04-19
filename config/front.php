@@ -12,7 +12,7 @@ $result = [
                 ],
             ],
             'request' => [
-                'class' => 'mtemplate\mclasses\MBTRequest'
+                'class' => \mtemplate\mclasses\MBTRequest::class
             ],
             'user' => [
                 'loginUrl' => ['/users/default/login'],
