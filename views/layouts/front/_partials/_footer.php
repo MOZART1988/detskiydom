@@ -12,11 +12,11 @@
             </div>
             <div class="footer-right">
                 <p>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>Республика Казахстан 050000. г. Алматы, Проспект Абылай Хана 141</p>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>Республика Казахстан 050000. г. Алматы, ул. Кабдолова, 26, здание МЦ "Авиценна".</p>
                 <p>
-                    <i class="fa fa-phone" aria-hidden="true"></i>+7 727-317-11-38: +7 701 794-12-95: +7 705 888-80-98</p>
+                    <i class="fa fa-phone" aria-hidden="true"></i>+7(701) 794-12-95, +7(777) 591-00-77, +7(705) 888-80-98</p>
                 <p>
-                    <i class="fa fa-envelope" aria-hidden="true"></i>hello@kunbala.kz</p>
+                    <i class="fa fa-envelope" aria-hidden="true"></i>kunbala.fund@gmail.com</p>
             </div>
         </div>
     </div>
