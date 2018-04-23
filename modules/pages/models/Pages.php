@@ -15,6 +15,7 @@ use mongosoft\file\UploadImageBehavior;
  *
  * @property integer $id
  * @property integer $type_id
+ * @property integer $sort
  * @property string $title
  * @property string $short_text
  * @property string $text
@@ -75,7 +76,8 @@ class Pages extends ActiveRecord
             [
                 [
                     'is_active',
-                    'type_id'
+                    'type_id',
+                    'sort'
                 ],
                 'integer'
             ],
@@ -107,7 +109,8 @@ class Pages extends ActiveRecord
             'sefname' => Yii::t('pages', 'ЧПУ'),
             'is_active' => Yii::t('pages', 'Активность'),
             'image' => Yii::t('admin', 'Изображение'),
-            'type_id' => Yii::t('admin', 'Тип статьи')
+            'type_id' => Yii::t('admin', 'Тип статьи'),
+            'sort' => Yii::t('admin', 'Сортировка')
         ];
     }
 

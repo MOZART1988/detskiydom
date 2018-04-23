@@ -40,6 +40,8 @@ use yii\widgets\ActiveForm;
 
             <?= $form->field($model, 'is_active')->checkbox()?>
 
+            <?= $form->field($model, 'sort')->textInput()?>
+
             <div class="form-group">
                 <?= Html::submitButton($model->isNewRecord ? Yii::t('pages', 'Создать') : Yii::t('pages',
                     'Изменить'), [

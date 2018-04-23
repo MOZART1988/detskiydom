@@ -11,8 +11,8 @@
                     <div class="header-contact--title">
                         <i class="fa fa-phone" aria-hidden="true"></i> Контактный телефон </div>
                     <div class="header-contact--info">
-                        <div class="header-contact--tel"> +7 (727)
-                            <span>317-11-38</span>
+                        <div class="header-contact--tel"> +7 (777)
+                            <span>591-00-77</span>
                         </div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                         <i class="fa fa-map-marker" aria-hidden="true"></i> Адрес </div>
                     <div class="header-contact--info">
                         <strong> Республика Казахстан 050000
-                            <br> г. Алматы, Проспект Абылай Хана 141 </strong>
+                            <br> г. Алматы, ул. Кабдолова, 26, здание МЦ "Авиценна", вход слева. </strong>
                     </div>
                 </div>
             </div>

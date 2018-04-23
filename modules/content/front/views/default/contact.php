@@ -17,7 +17,7 @@
                             zoom: 14,
                         }),
                         image = {
-                            url: 'images/marker.png',
+                            url: '/images/marker.png',
                             // This marker is 20 pixels wide by 32 pixels high.
                             scaledSize: new google.maps.Size(97, 132), // scaled size
                         },
@@ -38,16 +38,17 @@
         <div class="contacts-list">
             <div class="contact-item">
                 <span>Адрес:</span>
-                <p>г. Алматы, Проспект Абылай Хана 141, офис 320</p>
+                <p>г. Алматы, ул. Кабдолова, 26, здание МЦ "Авиценна", вход слева</p>
             </div>
             <div class="contact-item">
                 <span>Телефоны:</span>
-                <p>+7(727) 350-57-60</p>
-                <p>+7(707) 350-57-60</p>
+                <p>+7(701) 794-12-95</p>
+                <p>+7(777) 591-00-77</p>
+                <p>+7(777) 888-80-98</p>
             </div>
             <div class="contact-item">
                 <span>Электронная почта:</span>
-                <p>info@sd-c.kz</p>
+                <p>e-mail:kunbala.fund@gmail.com</p>
             </div>
         </div>
         <div class="contact-form">

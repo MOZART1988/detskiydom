@@ -32,7 +32,7 @@ class DefaultController extends MBTController
 
     public function actionContact()
     {
-        $this->setMeta(\Yii::t('front', 'Êîíòàêòû'));
+        $this->setMeta(\Yii::t('front', 'ĞšĞ¾Ğ½Ñ‚Ğ°ĞºÑ‚Ñ‹'));
         return $this->render('contact');
     }
 }

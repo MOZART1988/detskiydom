@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => \yii\grid\SerialColumn::class],
             'title',
+            'sort',
             [
                 'attribute' => 'type_id',
                 'value' => function ($data) {

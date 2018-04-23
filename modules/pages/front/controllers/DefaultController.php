@@ -114,7 +114,7 @@ class DefaultController extends MBTController
         $info = $query
             ->limit($pagination->limit)
             ->offset($pagination->offset)
-            ->orderBy(['create_date' => SORT_DESC])
+            ->orderBy(['sort' => SORT_ASC])
             ->all();
 
         if (!$info) {
