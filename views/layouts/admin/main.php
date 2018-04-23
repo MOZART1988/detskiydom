@@ -98,6 +98,10 @@ $current_user = \app\modules\users\models\Users::findOne(\Yii::$app->getUser()->
                                         'url' => '#',
                                         'items' => [
                                             [
+                                                'label' => 'Слайдер',
+                                                'url' => ['/slides/default/index']
+                                            ],
+                                            [
                                                 'label' => 'Новости',
                                                 'url' => ['/pages/default/index']
                                             ],

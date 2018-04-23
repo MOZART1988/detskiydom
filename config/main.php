@@ -61,6 +61,9 @@ $result = [
             ],
             'videos' => [
                 'class' => \app\modules\videos\Module::class
+            ],
+            'slides' => [
+                'class' => \app\modules\slides\Module::class
             ]
         ],
         'components' => [
