@@ -32,6 +32,9 @@ $result = [
         'timeZone' => 'Asia/Almaty',
         'defaultRoute' => 'basepage/default/index',
         'modules' => [
+            'gridview' =>  [
+                'class' => '\kartik\grid\Module'
+            ],
             'basepage' => [
                 'class' => 'app\modules\basepage\Module',
             ],

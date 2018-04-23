@@ -13,7 +13,9 @@
         "2amigos/yii2-grid-view-library": "~1.0",
         "mongosoft/yii2-upload-behavior": "*",
         "mihaildev/yii2-ckeditor": "*",
-        "kartik-v/yii2-widget-fileinput": "@dev"
+        "kartik-v/yii2-widget-fileinput": "@dev",
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-editable": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

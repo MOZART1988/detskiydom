@@ -101,7 +101,6 @@ class Pages extends ActiveRecord
     {
         return [
             'id' => Yii::t('pages', 'ID'),
-            'user_id' => Yii::t('pages', 'Пользователь'),
             'lang_id' => Yii::t('pages', 'Язык'),
             'title' => Yii::t('pages', 'Заголовок'),
             'short_text' => Yii::t('pages', 'Краткое описание на главной'),

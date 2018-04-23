@@ -21,21 +21,36 @@ $this->params['breadcrumbs'][] = $this->title;
         ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?php \yii\widgets\Pjax::begin(['id' => 'pjaxgrid']); ?>
-    <?= GridView::widget([
+    <?= \kartik\grid\GridView::widget([
+        'tableOptions' => [
+            'class' => 'table table-bordered',
+        ],
+        'bordered' => false,
+        'striped' => false,
         'dataProvider' => $dataProvider,
-        'tableOptions' => ['class' => 'table table-bordered'],
         'filterModel' => $searchModel,
-        'layout' => "{items}\n{pager}",
+        'filterUrl' => \yii\helpers\Url::to(['/pages/default/index']),
+        'layout' => '{items}',
         'columns' => [
             ['class' => \yii\grid\SerialColumn::class],
             'title',
-            'sort',
+            [
+                'class' => \kartik\grid\EditableColumn::class,
+                'attribute' => 'sort',
+                'value' => function ($data) {
+                    /**
+                     * @var $data \app\modules\pages\models\Pages
+                    */
+
+                    return $data->sort;
+                }
+            ],
             [
                 'attribute' => 'type_id',
                 'value' => function ($data) {
                     /**
                      * @var \app\modules\pages\models\Pages $data
-                    */
+                     */
 
                     return \app\modules\pages\models\Pages::$types[$data->type_id];
                 },
@@ -46,6 +61,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{update}{delete}'
             ],
         ],
-    ]); ?>
+    ]) ?>
     <?php \yii\widgets\Pjax::end(); ?>
 </div>

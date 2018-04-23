@@ -15,19 +15,15 @@ use yii\helpers\VarDumper;
 class PagesSearch extends Pages
 {
 
-    public $pub_date_from;
-    public $pub_date_to;
-    public $category_id;
-
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'user_id', 'lang_id', 'views', 'is_active', 'category_id', 'type_id', 'sort'], 'integer'],
+            [['id', 'is_active', 'type_id', 'sort'], 'integer'],
             [
-                ['title', 'short_text', 'text', 'sefname', 'pub_date', 'pub_date_from', 'pub_date_to', 'status_id'],
+                ['title', 'short_text', 'text', 'sefname'],
                 'safe'
             ],
         ];
@@ -42,14 +38,6 @@ class PagesSearch extends Pages
         $scenarios = Model::scenarios();
         $scenarios['search'] = ['title', 'pub_date', 'status_id', 'user_id', 'is_active', 'category_id'];
         return $scenarios;
-    }
-
-    public function attributeLabels()
-    {
-        return ArrayHelper::merge(parent::attributeLabels(), [
-            'pub_date_from' => 'С',
-            'pub_date_to' => ' По'
-        ]);
     }
 
     /**
@@ -76,7 +64,8 @@ class PagesSearch extends Pages
         $query->andFilterWhere([
             'id' => $this->id,
             'pages.is_active' => $this->is_active,
-            'pages.type_id' => $this->type_id
+            'pages.type_id' => $this->type_id,
+            'pages.sort' => $this->sort
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
