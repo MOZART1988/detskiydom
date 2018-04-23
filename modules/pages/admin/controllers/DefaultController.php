@@ -2,6 +2,7 @@
 
 namespace app\modules\pages\admin\controllers;
 
+use Codeception\PHPUnit\Constraint\Page;
 use mtemplate\mcontrollers\MBTAController;
 use Yii;
 use app\modules\pages\models\Pages;
@@ -112,5 +113,31 @@ class DefaultController extends MBTAController
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionSetNewAttribute($id, $attribute)
+    {
+        $model = Pages::findOne($id);
+
+        if ($model === null) {
+            return false;
+        }
+
+        if ($model->load(\Yii::$app->request->post())) {
+            $postModel = \Yii::$app->request->post('Pages');
+            $finalValue = null;
+
+            foreach ($postModel as $key => $value) {
+
+                $finalValue = $value[$attribute];
+            }
+
+            $model->$attribute = $finalValue;
+
+            $model->save();
+            return true;
+        }
+
+        return false;
     }
 }

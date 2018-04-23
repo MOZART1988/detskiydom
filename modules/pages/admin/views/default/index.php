@@ -43,7 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     */
 
                     return $data->sort;
-                }
+                },
+                'editableOptions' => function ($model, $key, $index) {
+                    return [
+                        'formOptions' => [
+                            'action' => \yii\helpers\Url::to(['/pages/default/set-new-attribute/', 'id' => $model->id, 'attribute' => 'sort', 'value' => $key])
+                        ],
+                    ];
+                },
             ],
             [
                 'attribute' => 'type_id',
