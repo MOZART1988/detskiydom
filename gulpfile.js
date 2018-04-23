@@ -340,7 +340,7 @@ gulp.task('clean', del.bind(null, [
   '.tmp',
   'web/**',
   '!web',
-  '!admin/**',
+  '!web/admin/**',
   '!web/css/**',
   '!web/js/**',
   '!web/*.php',

@@ -14,7 +14,7 @@
         </div>
         <div class="story-author">
             <?=\yii\helpers\Html::img(\app\components\behaviors\PreviewBehaviour::getImageUrl(
-                'histories', $history->user_image, $history->id, '_50x50_'), ['style' => 'border-radius: 50px!important;'])?>
+                'histories', $history->user_image, $history->id, '_50x50_'), ['class' => 'story-author--image'])?>
             <span class="story-author--name"><?=$history->user_fio?></span>
         </div>
     </div>

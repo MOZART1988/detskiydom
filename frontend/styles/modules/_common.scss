@@ -85,9 +85,8 @@
 
 
 .top-slider--text {
-  margin-top: 75px;
-  margin-bottom: 95px;
-  margin-left: 15px;
+  margin-top: 75px;  
+  margin-left: 20px;
   width: 50%;
   position: relative;
   z-index: 3;
@@ -131,6 +130,17 @@
 }
 
 .top-slider {
+  width: 100%;
+  margin-bottom: 55px;
+  .swiper-slide {
+    display: flex;
+    width: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
+
+.top-slider-wrapper {
   margin-top: 45px;
   width: 50%;
   .top-slider--block {
@@ -152,23 +162,27 @@
     }
   }
 
-  .swiper-slide {
-    img {
-      width: 100%;
-      max-width: 100%;
-    }
+
+  .top-slider--block img {
+    width: 100%;
+    max-width: 100%;
+    height: 360px;
   }
+
   .slider-bottom {
     display: block;
     float: right;
-    margin-right: 18px;
+    margin-right: 45px;
   }
 }
 
 
-.swiper-pagination {
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
   position: static;
   margin-top: 18px;
+  width: 50%;
+  float: right;
+  margin-right: 35px;
   span+span {
     margin-left: 6px;
   }
@@ -801,7 +815,9 @@
         color: #fff;
         letter-spacing: .5px;
         text-transform: uppercase;
-        &:hover, &:focus, &:active {
+        &:hover,
+        &:focus,
+        &:active {
           text-decoration: none;
         }
         span {
@@ -820,7 +836,6 @@
   background: #fff;
   height: 80%;
   top: 50%;
-
 }
 
 .fancybox-image {
@@ -842,23 +857,25 @@
   background: url(../images/prev-btn.png) center no-repeat;
   left: 6px;
 }
+
 .fancybox-navigation .fancybox-button--arrow_right {
   background: url(../images/next-btn.png) center no-repeat;
   right: 6px;
 }
-.fancybox-navigation .fancybox-button {  
+
+.fancybox-navigation .fancybox-button {
   opacity: 1;
   padding: 0;
   position: absolute;
   top: 0;
   width: 77px;
   height: 76px;
-  visibility: visible;  
+  visibility: visible;
   svg {
     display: none;
   }
 }
- 
+
 
 .fancybox-toolbar {
   top: 10%;
@@ -872,7 +889,7 @@
   border: 0;
   border-radius: 0;
   cursor: pointer;
-  display: inline-block;  
+  display: inline-block;
   margin: 0;
   outline: none;
   padding: 10px;
@@ -902,9 +919,11 @@
     font-weight: normal;
   }
 }
+
 .fancybox-slide--image {
   padding: 44px 0 100px;
 }
+
 .fancybox-caption:before {
   display: none;
 }
