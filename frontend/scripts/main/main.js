@@ -2,7 +2,7 @@
 
 import myModule from './module-to-import';
 
-$(document).ready(function () {
+$(document).ready(function() {
 
   let mySwiper = new Swiper('.top-slider .swiper-container', {
     // If we need pagination
@@ -12,16 +12,6 @@ $(document).ready(function () {
     }
   })
 
-  let newsSwiper = new Swiper('.news-slider .swiper-container', {
-    slidesPerView: 4,
-    spaceBetween: 35,
-    pagination: {
-      el: '.news-slider .swiper-pagination',
-      clickable: true
-    },
-    slidesPerGroup: 4,
-    loopFillGroupWithBlank: true
-  });
 
   let newsInnerSwiper = new Swiper('.inner-news-slider .swiper-container', {
     slidesPerView: 3,
@@ -76,11 +66,66 @@ $(document).ready(function () {
     loop: true
   });
 
-  setTimeout(function () {
+  if ($(document).width() < 1170 && $(document).width() > 993) {
+    let newsSwiper = new Swiper('.news-slider .swiper-container', {
+      slidesPerView: 3,
+      spaceBetween: 25,
+      pagination: {
+        el: '.news-slider .swiper-pagination',
+        clickable: true
+      },
+      slidesPerGroup: 3,
+      loopFillGroupWithBlank: true
+    });
+  } else if ($(document).width() < 992 && $(document).width() > 640) {
+    let newsSwiper = new Swiper('.news-slider .swiper-container', {
+      slidesPerView: 3,
+      spaceBetween: 25,
+      pagination: {
+        el: '.news-slider .swiper-pagination',
+        clickable: true
+      },
+      slidesPerGroup: 3,
+      loopFillGroupWithBlank: true
+    });
+  } else if ($(document).width() < 641 && $(document).width() > 480) {
+    console.log('here');
+    let newsSwiper = new Swiper('.news-slider .swiper-container', {
+      slidesPerView: 2,
+      spaceBetween: 25,
+      pagination: {
+        el: '.news-slider .swiper-pagination',
+        clickable: true
+      },
+      slidesPerGroup: 2,
+      loopFillGroupWithBlank: true
+    });
+  } else if ($(document).width() < 481) {
+    let newsSwiper = new Swiper('.news-slider .swiper-container', {
+      slidesPerView: 2,
+      spaceBetween: 25,
+      pagination: {
+        el: '.news-slider .swiper-pagination',
+        clickable: true
+      },
+      slidesPerGroup: 2,
+      loopFillGroupWithBlank: true
+    });
+  } else {
+    let newsSwiper = new Swiper('.news-slider .swiper-container', {
+      slidesPerView: 4,
+      spaceBetween: 35,
+      pagination: {
+        el: '.news-slider .swiper-pagination',
+        clickable: true
+      },
+      slidesPerGroup: 4,
+      loopFillGroupWithBlank: true
+    });
+  }
 
-  }, 2000)
 
-  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
     console.log(e.target); // newly activated tab
     galerySwiper1.update();
     galerySwiper2.update();
@@ -98,40 +143,39 @@ $(document).ready(function () {
       "close"
     ],
     loop: true,
-    baseTpl:  '<div class="fancybox-container" role="dialog" tabindex="-1">' +
-                '<div class="fancybox-bg"></div>' +
-                '<div class="fancybox-inner">' +
-                  '<div class="fancybox-infobar">' +
-                    "<span data-fancybox-index></span>&nbsp;/&nbsp;<span data-fancybox-count></span>" +
-                  "</div>" +
-                  '<div class="fancybox-toolbar">{{buttons}}</div>' +
-                  '<div class="fancybox-navigation">{{arrows}}</div>' +
-                  '<div class="fancybox-stage">' + '<div class="fancybox-caption"></div>' + '</div>'
-                   +
-                "</div>" +
-              "</div>"
+    baseTpl: '<div class="fancybox-container" role="dialog" tabindex="-1">' +
+      '<div class="fancybox-bg"></div>' +
+      '<div class="fancybox-inner">' +
+      '<div class="fancybox-infobar">' +
+      "<span data-fancybox-index></span>&nbsp;/&nbsp;<span data-fancybox-count></span>" +
+      "</div>" +
+      '<div class="fancybox-toolbar">{{buttons}}</div>' +
+      '<div class="fancybox-navigation">{{arrows}}</div>' +
+      '<div class="fancybox-stage">' + '<div class="fancybox-caption"></div>' + '</div>' +
+      "</div>" +
+      "</div>"
   });
 
 
   // imported module
   myModule('myModule');
 
-  $('body').on('beforeSubmit', '#sidebar-contact-widget', function () {
+  $('body').on('beforeSubmit', '#sidebar-contact-widget', function() {
     var form = $(this);
     $.ajax({
       url: form.attr('action'),
       type: 'POST',
       dataType: 'JSON',
       data: form.serialize(),
-      beforeSend: function () {
+      beforeSend: function() {
 
       },
-      success: function (data) {
+      success: function(data) {
         if (data.success == true) {
           $('.feedback-form').html('<h3>Спасибо за Ваше сообщение!</h3>');
         }
       },
-      error: function (data) {
+      error: function(data) {
         $('.feedback-form').html('<h3>Произошла ошибка сервера, попробуйте позже!</h3>');
       }
     });

@@ -38,6 +38,9 @@
   background: #fecc00;
   margin-top: 15px;
   ul {
+    @media(max-width: 1170px) {
+      padding-left: 10px;
+    }
     li {
       display: inline-block;
       position: relative;
@@ -55,6 +58,13 @@
         &:hover {
           color: $color-orange;
           text-decoration: none;
+        }
+        @media(max-width: 1280px) {
+          padding: 12px 15px;
+        }
+        @media(max-width: 1170px) {
+          padding: 8px 12px;
+          font-size: 12px;
         }
       }
       &.active {
@@ -74,6 +84,12 @@
           z-index: 1;
           -webkit-clip-path: polygon(0 5%, 97% 10%, 100% 87%, 0 93%);
           clip-path: polygon(0 5%, 97% 10%, 100% 87%, 0 93%);
+        }
+        @media(max-width: 1170px) {
+          &:before {
+            content: "";
+            height: 52px;
+          }
         }
       }
     }
@@ -176,17 +192,25 @@
   }
 }
 
-
-.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
-  position: static;
-  margin-top: 18px;
-  width: 50%;
-  float: right;
-  margin-right: 35px;
-  span+span {
-    margin-left: 6px;
-  }
+.swiper-pagination {
+    position: static;
+    margin-top: 18px;
 }
+
+.top-block {
+  .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    position: static;
+    margin-top: 18px;
+    width: 50%;
+    float: right;
+    margin-right: 35px;
+    span+span {
+      margin-left: 6px;
+    }
+  } 
+}
+
+
 
 .swiper-pagination-bullet {
   border-radius: 0;
@@ -265,6 +289,11 @@
     background: url(../images/story-bg.png) top center no-repeat;
     color: #fff;
     padding-top: 65px;
+    @media (max-width: 1280px) {
+      background-size: contain;
+      height: 400px;      
+      padding-top: 50px;
+    }
     h2 {
       font-size: 30px;
       letter-spacing: 1px;
@@ -280,12 +309,27 @@
     line-height: 28px;
     margin-bottom: 20px;
     position: relative;
+    @media (max-width: 1280px) {
+      font-size: 20px;
+      line-height: 24px;
+    }        
     &:before {
       content: url(../images/quotes-left.png);
       position: absolute;
       left: 0;
       top: 50%;
       transform: translateY(-50%);
+      @media (max-width: 1280px) {
+        content: "";
+        background: url(../images/quotes-left.png) center no-repeat;
+        position: absolute;
+        left: 0;
+        top: 30%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background-size: contain;
+      }      
     }
     &:after {
       content: url(../images/quotes-right.png);
@@ -293,6 +337,17 @@
       right: 0;
       top: 50%;
       transform: translateY(-50%);
+      @media (max-width: 1280px) {
+        content: "";
+        background: url(../images/quotes-right.png) center no-repeat;
+        position: absolute;
+        right: 0;
+        top: 30%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background-size: contain;
+      }    
     }
     .btn {
       margin-top: 20px;
