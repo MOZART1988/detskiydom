@@ -9,6 +9,7 @@
 namespace app\components\widgets;
 
 use app\modules\galleries\models\Galleries;
+use app\modules\slides\models\Slides;
 use yii\base\Widget;
 
 class SliderWidget extends Widget
@@ -21,13 +22,9 @@ class SliderWidget extends Widget
             return false;
         }
 
-        $slider = Galleries::find()->where(['is_active' => 1, 'sefname' => 'slider'])->one();
+        $slider = Slides::find()->where(['is_active' => 1])->limit(5)->all();
 
         if (!$slider) {
-            return false;
-        }
-
-        if (!$slider->images) {
             return false;
         }
 
