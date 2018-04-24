@@ -19,7 +19,7 @@
                                     <p><?=$item->text?></p>
                                 </div>
                                 <div class="read-more">
-                                    <a href="<?=$_SERVER['HTTP_HOST'] . $item->link?>"></a>
+                                    <a href="<?='http://'  . $_SERVER['HTTP_HOST'] . $item->link?>">Читать все</a>
                                 </div>
                             </div>
                             <div class="top-slider-wrapper">
