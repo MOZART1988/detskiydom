@@ -26,6 +26,10 @@
 	ul {
 		padding-left: 0;
 		margin-bottom: 0;
+		text-align: center;
+		@media (max-width: 640px) {
+			width: 100%;
+		}
 		li {
 			display: inline-block;
 			margin: 0 5px;
@@ -54,6 +58,9 @@
 		text-transform: uppercase;
 		font-weight: bold;
 		font-size: 11px;
+		@media (max-width: 640px) {
+			display: none;
+		}
 		a {
 			color:  #f07c00;
 		}
@@ -82,6 +89,7 @@
 		}
 	}
 	.next-link {
+		margin-top: 0;
 		a:after {
 			content: "";
 			display: inline-block;

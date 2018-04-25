@@ -14,6 +14,9 @@
 .modal-body {
   padding: 0px 50px 50px;
   border-bottom: 0;
+  @media (max-width: 640px) {
+    padding: 0px 25px 30px;
+  }
 }
 
 .quiz-rezult {
@@ -24,18 +27,35 @@
   flex-shrink: 0;
   width: 155px;
   margin-bottom: 10px;
+  @media (max-width: 640px) {
+    width: 30%;
+  }
+  @media (max-width: 480px) {
+    width: 40%;
+  }
 }
 
 .quiz-answer--value {
   display: flex;
+  @media (max-width: 640px) {
+    width: 70%;
+  }
+  @media (max-width: 480px) {
+    width: 60%;
+  }
   span {
     width: 50px;
-    ;
+    @media (max-width: 640px) {
+      width: 30%;
+    }
   }
 }
 
 .quiz-answer--progress {
   width: 350px;
+  @media (max-width: 640px) {
+    width: 70%;
+  }
   .progress-filled {
     height: 11px;
     &.first {
