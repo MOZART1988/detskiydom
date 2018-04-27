@@ -120,6 +120,10 @@ $current_user = \app\modules\users\models\Users::findOne(\Yii::$app->getUser()->
                                             [
                                                 'label' => 'Видео',
                                                 'url' => ['/videos/default/index']
+                                            ],
+                                            [
+                                                'label' => 'Опрос',
+                                                'url' => ['/poll/default/index']
                                             ]
                                         ]
                                     ],

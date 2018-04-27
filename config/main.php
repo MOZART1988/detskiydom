@@ -67,6 +67,9 @@ $result = [
             ],
             'slides' => [
                 'class' => \app\modules\slides\Module::class
+            ],
+            'poll' => [
+                'class' => \app\modules\poll\Module::class
             ]
         ],
         'components' => [
