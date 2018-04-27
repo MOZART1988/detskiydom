@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
             <div class="modal-body">
                 <div class="quiz-block">
                     <p><?=$pollTitle->value?></p>
-
+                    <?php if (\Yii::$app->session->get('voted', 0) === 'yes') : ?>
                         <?php $form = ActiveForm::begin(['id' => 'poll-form', 'action' => \yii\helpers\Url::to(['/poll/default/send-poll'])]); ?>
                         <?= $form->field($model, 'answerId')->radioList(\app\modules\poll\models\Poll::getAllAnswers(),
                             [
@@ -35,7 +35,7 @@ use yii\widgets\ActiveForm;
 
                         <button type="submit" class="btn btn--orangelight">Проголосовать</button>
                         <?php ActiveForm::end()?>
-
+                    <?php endif; ?>
                     <div class="quiz-results">
                         <?php foreach ($poll as $answer) : ?>
                             <div class="quiz-rezult">

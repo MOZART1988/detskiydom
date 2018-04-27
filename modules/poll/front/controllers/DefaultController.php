@@ -22,5 +22,7 @@ class DefaultController extends MBTController
         if ($model->load(\Yii::$app->request->post()) && $model->increasePoll()) {
             return $this->redirect(\Yii::$app->request->referrer);
         }
+
+        throw new NotFoundHttpException();
     }
 }
