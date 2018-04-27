@@ -37,7 +37,7 @@ class PollForm extends Model
 
         $answer->count++;
         $answer->save();
-        \Yii::$app->session->set('voted' , 1);
+        \Yii::$app->session->set('voted' , 'yes');
 
         return true;
     }
