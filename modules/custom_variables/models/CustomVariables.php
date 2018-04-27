@@ -97,7 +97,7 @@ class CustomVariables extends LanguageActiveRecord
     {
         $query = new CustomVariablesQuery(get_called_class());
 
-        if (Yii::$app->params['yiiEnd'] == 'admin') {
+        if (Yii::$app->params['yiiEnd'] === 'admin') {
             return $query->setLanguage();
         }
 

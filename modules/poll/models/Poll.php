@@ -67,4 +67,28 @@ class Poll extends ActiveRecord
             ],
         ];
     }
+
+    public function getPrecentAnswer()
+    {
+        $count = 0;
+
+        foreach (self::find()->all() as $item) {
+            $count += (int)$item->count;
+        }
+
+        return (int)((100 * (int)$this->count) / $count);
+
+
+    }
+
+    public static function getAllAnswers()
+    {
+        $result = [];
+
+        foreach(self::find()->all() as $answer) {
+            $result[$answer->id] = $answer->answer;
+        }
+
+        return $result;
+    }
 }

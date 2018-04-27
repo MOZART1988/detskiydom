@@ -70,6 +70,9 @@ $result = [
             ],
             'poll' => [
                 'class' => \app\modules\poll\Module::class
+            ],
+            'custom_variables' => [
+                'class' => \app\modules\custom_variables\Module::class
             ]
         ],
         'components' => [
