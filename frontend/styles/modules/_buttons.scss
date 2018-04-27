@@ -72,6 +72,21 @@
 			color: #fff;
 			background: #fecc00;
 		}
+		@media(max-width: 767px) {
+			font-size: 20px;
+			padding: 25px 0px;
+			width: 100%;
+		}
+		@media(max-width: 640px) {
+			font-size: 18px;
+			padding: 25px 0px;
+			width: 100%;
+		}
+		@media(max-width: 480px) {
+			font-size: 16px;
+			padding: 25px 0px;
+			width: 100%;
+		}
 	}
 }
 
