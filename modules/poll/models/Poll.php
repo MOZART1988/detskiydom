@@ -70,15 +70,17 @@ class Poll extends ActiveRecord
 
     public function getPrecentAnswer()
     {
-
         $count = 0;
 
         foreach (self::find()->all() as $item) {
-            $count += (int)$item->count;
+            $count += $item->count;
         }
 
-        return (int)((100 * (int)$this->count) / $count);
+        if ($count !== 0) {
+            return (100 * $this->count) / $count;
+        }
 
+        return 0;
 
     }
 
