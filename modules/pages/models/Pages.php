@@ -153,6 +153,6 @@ class Pages extends ActiveRecord
 
     public function getNext()
     {
-        return $this::find()->where(['is_active' => 1])->andWhere(['>', 'id', $this->id])->one();
+        return $this::find()->where(['is_active' => 1, 'type_id' => self::TYPE_NEWS])->andWhere(['>', 'id', $this->id])->one();
     }
 }

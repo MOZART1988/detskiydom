@@ -32,9 +32,13 @@
                                 <!-- Slides -->
                                 <div class="swiper-slide news-item">
                                     <a href="<?=\yii\helpers\Url::to(['/histories/default/view', 'id' => $item->id])?>">
+                                        <?php if (!empty($item->image)) : ?>
                                         <?=\yii\helpers\Html::img(
                                             \app\components\behaviors\PreviewBehaviour::getImageUrl(
                                                 'histories', $item->image, $item->id, '_425x296_'))?>
+                                        <?php else : ?>
+                                            <img src="/images/no-photo.png">
+                                        <?php endif; ?>
                                     </a>
                                     <div class="news-title">
                                         <a href="<?=\yii\helpers\Url::to(['/histories/default/view', 'id' => $item->id])?>">
@@ -43,9 +47,13 @@
                                     </div>
                                     <div class="news-text"><?=$item->short_text?></div>
                                     <div class="news-author">
+                                        <?php if (!empty($item->user_image)) : ?>
                                         <?=\yii\helpers\Html::img(
                                             \app\components\behaviors\PreviewBehaviour::getImageUrl(
                                                 'histories', $item->user_image, $item->id, '_50x50_'))?>
+                                        <?php else: ?>
+                                            <img src="/images/no-photo.png">
+                                        <?php endif; ?>
                                         <span><?=$item->user_fio?></span>
                                     </div>
                                 </div>

@@ -10,6 +10,7 @@ namespace app\components\widgets;
 
 
 use app\modules\content\models\Content;
+use app\modules\histories\models\Histories;
 use app\modules\pages\models\Pages;
 use yii\base\Widget;
 use yii\helpers\Html;
@@ -84,6 +85,17 @@ class BreadcumsWidget extends Widget
                 switch(\Yii::$app->controller->action->id) {
                     case 'index':
                         $result[] = 'Живые истории';
+                        break;
+                    case 'view':
+                        $result[] = '<a href="/histories/">Живые истории</a>';
+
+                        $newsId = \Yii::$app->request->get('id');
+                        $model = Histories::findOne($newsId);
+
+                        if ($model !== null) {
+                            $result[] = $model->title;
+                        }
+                        break;
                 }
             break;
         }

@@ -56,7 +56,7 @@ class DefaultController extends MBTController
             throw new NotFoundHttpException();
         }
 
-        $otherHistories = Histories::find()->where(['is_active' => 1])->andWhere(['<>', 'id', $this->id])
+        $otherHistories = Histories::find()->where(['is_active' => 1])->andWhere(['<>', 'id', $history->id])
             ->orderBy('RAND()')->limit(4)->all();
 
         $this->setMeta($history->title);
