@@ -25,11 +25,9 @@ use yii\widgets\ActiveForm;
 
 <?= $form->field($model, 'short_text')->textarea()?>
 
-<?= $form->field($model, 'text')->widget(\mihaildev\ckeditor\CKEditor::class,[
-    'editorOptions' => [
-        'preset' => 'standart',
-        'inline' => false,
-    ],
+<?= $form->field($model, 'text')->widget(\app\components\CustomCkeditor::class,[
+    'preset' => 'standart',
+    'options' => ['rows' => 6]
 ]);?>
 
 <?= $form->field($model, 'is_active')->checkbox() ?>

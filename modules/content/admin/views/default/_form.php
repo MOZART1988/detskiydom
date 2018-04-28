@@ -19,11 +19,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'text')->widget(\mihaildev\ckeditor\CKEditor::class,[
-        'editorOptions' => [
-            'preset' => 'standart',
-            'inline' => false,
-        ],
+    <?= $form->field($model, 'text')->widget(\app\components\CustomCkeditor::class,[
+        'preset' => 'standart',
+        'options' => ['rows' => 6]
     ]);?>
 
     <?= $form->field($model, 'sefname')->textInput(['maxlength' => 255, 'disabled' => 'disabled']) ?>
