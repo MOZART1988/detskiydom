@@ -12,16 +12,12 @@ $counter = 1;
             <div class="info-list">
                 <?php foreach ($info as $item) : ?>
                     <div class="info-item">
-                        <div class="info-item--number"><?=$counter++?>.</div>
                         <div class="info-title">
                             <a href="<?=\yii\helpers\Url::to(['/pages/default/info-view', 'id' => $item->id])?>">
                                 <?=$item->title?>
                             </a>
                         </div>
                         <p><?=$item->short_text?></p>
-                        <div class="news-date">
-                            <?=\Yii::$app->formatter->asDate($item->create_date, 'php:d.m.Y')?>
-                        </div>
                     </div>
                 <?php endforeach ; ?>
             </div>

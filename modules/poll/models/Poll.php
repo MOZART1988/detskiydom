@@ -77,7 +77,7 @@ class Poll extends ActiveRecord
         }
 
         if ($count !== 0) {
-            return (100 * $this->count) / $count;
+            return (int)((100 * $this->count) / $count);
         }
 
         return 0;
