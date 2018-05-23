@@ -12,7 +12,7 @@
                     'pages', $model->image, $model->id, '_398x277_'), ['class' => 'content-image'])?>
                 <?=$model->text?>
             </div>
-            <div class="news-date"><?=\Yii::$app->formatter->asDate($model->create_date, 'php:d.m.Y')?></div>
+            <div class="news-date"><?=\Yii::$app->formatter->asDate($model->pub_date, 'php:d.m.Y')?></div>
             <?php if ($model->next !== null) : ?>
             <a href="<?=\yii\helpers\Url::to(['/pages/default/news-view', 'id' => $model->next->id])?>" class="next-link"> <?=\Yii::t('front', 'читать следующую новость')?>
                 <img src="/images/next-arr.png" alt="">

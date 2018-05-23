@@ -22,7 +22,7 @@
                             <a href="<?=\yii\helpers\Url::to(['/pages/default/news-view', 'id' => $item->id])?>"><?=$item->title?></a>
                         </div>
                         <div class="news-text"><?=$item->short_text?></div>
-                        <div class="news-date"><?=\Yii::$app->formatter->asDate($item->create_date, 'php:d.m.Y')?></div>
+                        <div class="news-date"><?=\Yii::$app->formatter->asDate($item->pub_date, 'php:d.m.Y')?></div>
                     </div>
                 <?php endforeach ; ?>
             </div>
