@@ -17,7 +17,8 @@
         "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-editable": "@dev",
         "2amigos/yii2-ckeditor-widget":"~1.0",
-        "iutbay/yii2-kcfinder" : "*"
+        "iutbay/yii2-kcfinder" : "*",
+        "2amigos/yii2-date-picker-widget" : "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

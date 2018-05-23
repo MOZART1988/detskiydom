@@ -40,6 +40,13 @@ use yii\widgets\ActiveForm;
 
             <?= $form->field($model, 'sort')->textInput()?>
 
+            <?= $form->field($model, 'pub_date')->widget(\dosamigos\datepicker\DatePicker::class, [
+                'clientOptions' => [
+                    'autoclose' => true,
+                    'format' => 'yyyy-mm-dd'
+                ]
+            ])?>
+
             <div class="form-group">
                 <?= Html::submitButton($model->isNewRecord ? Yii::t('pages', 'Создать') : Yii::t('pages',
                     'Изменить'), [

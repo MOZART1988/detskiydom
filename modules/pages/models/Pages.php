@@ -22,6 +22,7 @@ use mongosoft\file\UploadImageBehavior;
  * @property integer $is_active
  * @property string $create_date
  * @property string $update_date
+ * @property string $pub_date
  * @property string $image
  * @property string $sefname
  *
@@ -81,7 +82,7 @@ class Pages extends ActiveRecord
                 ],
                 'integer'
             ],
-            [['short_text', 'text'], 'string'],
+            [['short_text', 'text', 'pub_date'], 'string'],
             ['image', 'image', 'extensions' => 'jpg, jpeg, gif, png', 'on' => ['create', 'update']],
             [
                 [
@@ -109,7 +110,8 @@ class Pages extends ActiveRecord
             'is_active' => Yii::t('pages', 'Активность'),
             'image' => Yii::t('admin', 'Изображение'),
             'type_id' => Yii::t('admin', 'Тип статьи'),
-            'sort' => Yii::t('admin', 'Сортировка')
+            'sort' => Yii::t('admin', 'Сортировка'),
+            'pub_date' => Yii::t('admin', 'Дата публикации')
         ];
     }
 
