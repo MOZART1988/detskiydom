@@ -46,16 +46,6 @@
                                         </a>
                                     </div>
                                     <div class="news-text"><?=$item->short_text?></div>
-                                    <div class="news-author">
-                                        <?php if (!empty($item->user_image)) : ?>
-                                        <?=\yii\helpers\Html::img(
-                                            \app\components\behaviors\PreviewBehaviour::getImageUrl(
-                                                'histories', $item->user_image, $item->id, '_50x50_'))?>
-                                        <?php else: ?>
-                                            <img src="/images/no-photo.png">
-                                        <?php endif; ?>
-                                        <span><?=$item->user_fio?></span>
-                                    </div>
                                 </div>
                             <?php endforeach ; ?>
                             <!-- If we need pagination -->
