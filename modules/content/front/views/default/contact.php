@@ -53,16 +53,15 @@
         </div>
         <div class="contact-form">
             <div class="form-text"> Обратная связь: </div>
-            <form action="">
-                <div class="form-group inline">
-                    <input type="text" class="form-control" placeholder="Имя"> </div>
-                <div class="form-group inline">
-                    <input type="email" class="form-control" placeholder="Электронная почта"> </div>
-                <div class="form-group">
-                    <textarea name="" class="form-control" id="" rows="7" placeholder="Ваши предложения"></textarea>
-                </div>
+            <?php $form = \yii\widgets\ActiveForm::begin(['id' => 'sidebar-contact-widget', 'action' => \yii\helpers\Url::to(['/pages/default/send-form/'])]); ?>
+                <?= $form->field($model, 'name')->textInput(['placeholder' => \Yii::t('front', 'Имя')])->label(false) ?>
+                <?= $form->field($model, 'email')->textInput(['placeholder' => \Yii::t('front', 'Электронная почта')])->label(false) ?>
+                <?= $form->field($model, 'message')->textarea([
+                'placeholder' => \Yii::t('front', 'Ваши предложения'),
+                'rows' => 7
+                ])->label(false) ?>
                 <button type="submit" class="btn btn--form">ОТПРАВИТЬ</button>
-            </form>
+            <?php \yii\widgets\ActiveForm::end(); ?>
         </div>
     </div>
 </div>

@@ -10,6 +10,7 @@ namespace app\modules\content\front\controllers;
 
 
 use app\modules\content\models\Content;
+use app\modules\pages\front\forms\ContactForm;
 use mtemplate\mcontrollers\MBTController;
 use yii\web\NotFoundHttpException;
 
@@ -33,6 +34,7 @@ class DefaultController extends MBTController
     public function actionContact()
     {
         $this->setMeta(\Yii::t('front', 'Контакты'));
-        return $this->render('contact');
+        $model = new ContactForm();
+        return $this->render('contact', ['model' => $model]);
     }
 }

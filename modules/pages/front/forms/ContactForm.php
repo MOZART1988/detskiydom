@@ -32,7 +32,7 @@ class ContactForm extends Model
     public function rules()
     {
         return [
-            [['name', 'phone', 'email'], 'required'],
+            [['name', 'email'], 'required'],
             [['email'], 'email'],
             [['name', 'phone', 'message'], 'safe']
         ];

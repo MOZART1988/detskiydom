@@ -292,11 +292,11 @@ $(document).ready(function() {
       },
       success: function(data) {
         if (data.success == true) {
-          $('.feedback-form').html('<h3>Спасибо за Ваше сообщение!</h3>');
+          $('.feedback-form, .contact-form').html('<h3>Спасибо за Ваше сообщение!</h3>');
         }
       },
       error: function(data) {
-        $('.feedback-form').html('<h3>Произошла ошибка сервера, попробуйте позже!</h3>');
+        $('.feedback-form, .contact-form').html('<h3>Произошла ошибка сервера, попробуйте позже!</h3>');
       }
     });
 
