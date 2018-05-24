@@ -38,7 +38,7 @@ class DefaultController extends MBTController
         $news = $query
             ->limit($pagination->limit)
             ->offset($pagination->offset)
-            ->orderBy(['create_date' => SORT_DESC])
+            ->orderBy(['pub_date' => SORT_DESC])
             ->all();
 
         if (!$news) {

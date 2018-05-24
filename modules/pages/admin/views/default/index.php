@@ -20,7 +20,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'modelClass' => 'Pages',
         ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?php \yii\widgets\Pjax::begin(['id' => 'pjaxgrid']); ?>
     <?= \kartik\grid\GridView::widget([
         'tableOptions' => [
             'class' => 'table table-bordered',
@@ -69,5 +68,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]) ?>
-    <?php \yii\widgets\Pjax::end(); ?>
+
+    <?= \yii\widgets\LinkPager::widget([
+        'pagination' => $dataProvider->pagination
+    ])?>
+
 </div>

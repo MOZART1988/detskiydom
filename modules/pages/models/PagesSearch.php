@@ -54,7 +54,7 @@ class PagesSearch extends Pages
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => ['defaultOrder' => ['id' => SORT_DESC]],
-
+            'pagination' => ['pageSize' => 30]
         ]);
 
         if (!($this->load($params) && $this->validate())) {

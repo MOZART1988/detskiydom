@@ -20,7 +20,7 @@ class InsideNewsWidget extends Widget
         parent::run();
 
         $news = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_NEWS])
-            ->andWhere(['<>', 'id', $this->id])->limit(6)->all();
+            ->andWhere(['<>', 'id', $this->id])->orderBy(['pub_date' => SORT_DESC])->limit(6)->all();
 
         if (!$news) {
             return false;
