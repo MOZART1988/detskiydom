@@ -12,7 +12,7 @@ class m180614_114425_add_lang_id_to_news extends Migration
      */
     public function safeUp()
     {
-        $this->addColumn('news', 'lang_id', $this->integer()->notNull()->defaultValue(1));
+        $this->addColumn('pages', 'lang_id', $this->integer()->notNull()->defaultValue(1));
     }
 
     /**
@@ -20,6 +20,6 @@ class m180614_114425_add_lang_id_to_news extends Migration
      */
     public function safeDown()
     {
-        $this->dropColumn('news', 'lang_id');
+        $this->dropColumn('pages', 'lang_id');
     }
 }
