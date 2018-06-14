@@ -9,6 +9,7 @@
 namespace app\modules\pages\front\controllers;
 
 
+use app\modules\languages\models\Languages;
 use app\modules\pages\front\forms\ContactForm;
 use app\modules\pages\models\Pages;
 use mtemplate\mcontrollers\MBTController;
@@ -28,7 +29,7 @@ class DefaultController extends MBTController
 
     public function actionNews()
     {
-        $query = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_NEWS]);
+        $query = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_NEWS, 'lang_id' => Languages::getCurrent()->id]);
 
         $countQuery = clone $query;
         $count = $countQuery->count();
@@ -66,7 +67,7 @@ class DefaultController extends MBTController
 
     public function actionProgramms()
     {
-        $query = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_PROGRAMM]);
+        $query = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_PROGRAMM, 'lang_id' => Languages::getCurrent()->id]);
 
         $countQuery = clone $query;
         $count = $countQuery->count();
@@ -104,7 +105,7 @@ class DefaultController extends MBTController
     public function actionInfo()
     {
 
-        $query = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_FAQ]);
+        $query = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_FAQ, 'lang_id' => Languages::getCurrent()->id]);
 
         $countQuery = clone $query;
         $count = $countQuery->count();
