@@ -10,14 +10,19 @@ namespace app\modules\slides\models;
 
 
 use app\components\behaviors\PreviewBehaviour;
+use app\modules\languages\models\Languages;
 use mongosoft\file\UploadImageBehavior;
 use mtemplate\mclasses\ActiveRecord;
+use mtemplate\mclasses\LanguageActiveRecord;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
 use yii\db\Expression;
 
 /**
  * @property integer $id
  * @property integer $is_active
+ *
+ * @property integer $lang_id
  *
  * @property string $create_date
  * @property string $update_date
@@ -25,8 +30,10 @@ use yii\db\Expression;
  * @property string $text
  * @property string $image
  * @property string $link
+ *
+ * @property Languages $language
  */
-class Slides extends ActiveRecord
+class Slides extends LanguageActiveRecord
 {
     public static function tableName()
     {
@@ -90,5 +97,14 @@ class Slides extends ActiveRecord
                 ]
             ],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     * @return ActiveQuery
+    */
+    public function getLanguage()
+    {
+        return $this->hasOne(Languages::class, ['id' => 'lang_id']);
     }
 }

@@ -9,6 +9,7 @@
 namespace app\components\widgets;
 
 use app\modules\galleries\models\Galleries;
+use app\modules\languages\models\Languages;
 use app\modules\slides\models\Slides;
 use yii\base\Widget;
 
@@ -22,7 +23,7 @@ class SliderWidget extends Widget
             return false;
         }
 
-        $slider = Slides::find()->where(['is_active' => 1])->limit(5)->all();
+        $slider = Slides::find()->where(['is_active' => 1, 'lang_id' => Languages::getCurrent()->id])->limit(5)->all();
 
         if (!$slider) {
             return false;
