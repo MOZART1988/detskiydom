@@ -42,9 +42,9 @@ class PagesQuery extends ActiveQuery
         $langId = \Yii::$app->request->get('lang_id');
 
         if (!empty($langId)) {
-            $this->andWhere(['slides.lang_id' => Languages::getCurrent()->id]);
+            $this->andWhere(['pages.lang_id' => Languages::getCurrent()->id]);
         } else {
-            $this->andWhere(['slides.lang_id' => Languages::getAdminCurrent()->id]);
+            $this->andWhere(['pages.lang_id' => Languages::getAdminCurrent()->id]);
         }
 
         return $this;
