@@ -3,10 +3,12 @@
 namespace app\modules\pages\models;
 
 use app\components\behaviors\PreviewBehaviour;
+use app\modules\languages\models\Languages;
 use mtemplate\mclasses\ActiveRecord;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
 use yii\db\Expression;
 use mongosoft\file\UploadImageBehavior;
 
@@ -16,6 +18,8 @@ use mongosoft\file\UploadImageBehavior;
  * @property integer $id
  * @property integer $type_id
  * @property integer $sort
+ * @property integer $lang_id
+ *
  * @property string $title
  * @property string $short_text
  * @property string $text
@@ -26,6 +30,7 @@ use mongosoft\file\UploadImageBehavior;
  * @property string $image
  * @property string $sefname
  *
+ * @property Languages $language
  * @property Pages $next
  */
 class Pages extends ActiveRecord
@@ -62,7 +67,9 @@ class Pages extends ActiveRecord
      */
     public static function find()
     {
-        return new PagesQuery(get_called_class());
+        $query = new PagesQuery(get_called_class());
+
+        return $query->setLanguage();
     }
 
     /**
@@ -72,13 +79,14 @@ class Pages extends ActiveRecord
     {
 
         return [
-            [['title'], 'required'],
+            [['title', 'lang_id'], 'required'],
             [['sefname'], 'unique'],
             [
                 [
                     'is_active',
                     'type_id',
-                    'sort'
+                    'sort',
+                    'lang_id'
                 ],
                 'integer'
             ],
@@ -156,5 +164,14 @@ class Pages extends ActiveRecord
     public function getNext()
     {
         return $this::find()->where(['is_active' => 1, 'type_id' => self::TYPE_NEWS])->andWhere(['>', 'id', $this->id])->one();
+    }
+
+    /**
+     * @inheritdoc
+     * @return ActiveQuery
+    */
+    public function getLanguage()
+    {
+        return $this->hasOne(Languages::class, ['id' => 'lang_id']);
     }
 }

@@ -9,6 +9,7 @@
 namespace app\modules\pages\front\components\widgets;
 
 
+use app\modules\languages\models\Languages;
 use app\modules\pages\models\Pages;
 use yii\base\Widget;
 
@@ -18,7 +19,11 @@ class BasepageNewsWidget extends Widget
     {
         parent::run();
 
-        $news = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_NEWS])->orderBy('RAND()')->limit(8)->all();
+        $news = Pages::find()->where([
+            'is_active' => 1,
+            'type_id' => Pages::TYPE_NEWS,
+            'lang_id' => Languages::getCurrent()->id
+        ])->orderBy('RAND()')->limit(8)->all();
 
         if (!$news) {
             return false;
