@@ -93,7 +93,7 @@ class DefaultController extends MBTAController
             $userClass::updateAll(['lang_id' => $id], ['id' => Yii::$app->user->id]);
         }
 
-        $this->goBack();
+        return $this->redirect(\Yii::$app->request->referrer);
     }
 
     /**

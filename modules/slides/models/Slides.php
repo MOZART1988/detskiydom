@@ -99,6 +99,13 @@ class Slides extends LanguageActiveRecord
         ];
     }
 
+    public static function find()
+    {
+        $query = new SlidesQuery(get_called_class());
+
+        return $query->setLanguage();
+    }
+
     /**
      * @inheritdoc
      * @return ActiveQuery
