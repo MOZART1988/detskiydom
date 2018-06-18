@@ -23,7 +23,7 @@ class DefaultController extends MBTAController
     public function actionIndex($lang_id = 'ru')
     {
         $lang_id = Languages::getAdminCurrent()->code;
-        if ($lang_id == 'kz') {
+        if ($lang_id === 'kz') {
             $lang_id = 'kk';
         }
         $searchModel = new MessageSearch();

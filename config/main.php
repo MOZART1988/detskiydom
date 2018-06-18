@@ -73,6 +73,9 @@ $result = [
             ],
             'custom_variables' => [
                 'class' => \app\modules\custom_variables\Module::class
+            ],
+            'translate' => [
+                'class' => \app\modules\translate\Module::class
             ]
         ],
         'components' => [
