@@ -65,7 +65,7 @@ $result = [
             'errorHandler' => [
                 'errorAction' => 'basepage/default/error',
             ],
-            /*'i18n' => [
+            'i18n' => [
                 'translations' => [
                     '*' => [
                         'class' => 'yii\i18n\DbMessageSource',
@@ -76,7 +76,7 @@ $result = [
                         'forceTranslation' => false
                     ],
                 ],
-            ],*/
+            ],
         ],
         'params' => [
             'yiiEnd' => 'front'
