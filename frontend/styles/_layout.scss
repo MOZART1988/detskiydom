@@ -31,6 +31,7 @@ body {
 
 
 .header-content {
+  position: relative;
   display: flex;
   justify-content: space-between;
   @media (max-width: 640px) {

@@ -4,6 +4,11 @@ import myModule from './module-to-import';
 
 $(document).ready(function() {
 
+  $('.lang-selector a.current-lang').on('click', function(e) {
+    e.preventDefault();
+    $(this).next('ul').toggle();
+  })
+
   let mySwiper = new Swiper('.top-slider .swiper-container', {
     // If we need pagination
     pagination: {

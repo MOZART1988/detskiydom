@@ -1266,3 +1266,43 @@ th {
   border: 1px solid;
   padding: 10px 10px;
 }
+
+.lang-selector {
+  position: absolute;
+  left: 0;
+  top: -5px;
+  text-align: center;
+  background: url(../images/lang-bg.png) top center no-repeat;
+  width: 74px !important;
+  height: 28px !important;
+  a.current-lang {
+    color: #fff;
+    &:after {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      border: 5px solid transparent;
+      border-top: 5px solid #fff;
+      margin-left: 5px;
+      position: relative;
+      top: 3px;
+    }
+  }
+  a:hover, a:focus, a:active {
+    text-decoration: none;
+    opacity: .8;
+  }
+  ul {
+    display: none;
+    list-style: none;
+    padding-left: 0;
+    background: #f07c00;
+    padding: 8px 0;
+    li + li {
+      margin-top: 5px;
+    }
+    a {
+      color: #fff;
+    }
+  }
+}
