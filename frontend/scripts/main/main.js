@@ -247,6 +247,15 @@ $(document).ready(function() {
 
   $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
     console.log(e.target); // newly activated tab
+      let galerySwiper1 = new Swiper('#galery-slider1 .swiper-container', {
+          slidesPerView: 4,
+          spaceBetween: 10,
+          navigation: {
+              nextEl: '#galery-slider1 .swiper-button-next',
+              prevEl: '#galery-slider1 .swiper-button-prev'
+          },
+          loop: true
+      });
     galerySwiper1.update();
     galerySwiper2.update();
 
