@@ -6,6 +6,7 @@
 <header class="header">
     <div class="container">
         <div class="header-content">
+            <?=\app\modules\languages\front\components\LanguageWidget::widget()?>
             <div class="header-left">
                 <div class="header-contacts">
                     <div class="header-contact--title">
