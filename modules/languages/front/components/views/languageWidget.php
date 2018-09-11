@@ -1,19 +1,16 @@
 <?php
 /**
  * @var \app\modules\languages\models\Languages [] $models
+ * @var \app\modules\languages\models\Languages $current
 */
 ?>
-
-<!-- nav-lang -->
-<div class="nav-lang">
-    <ul class="list--inline">
+<div class="lang-selector">
+    <a class="current-lang" href="javascript:void;"><?=$current->title?></a>
+    <ul>
         <?php foreach ($models as $model) : ?>
-            <?php if ($model->id == app\modules\languages\models\Languages::getCurrent()->id) { ?>
-                <li class="active"><a href="#"><?=$model->title?></a></li>
-            <?php } else { ?>
-                <li><a href="/<?=$model->code?>"><?=$model->title?></a></li>
-            <?php } ?>
+            <li>
+                <a href="/<?=$model->code?>"><?=$model->title?></a>
+            </li>
         <?php endforeach; ?>
     </ul>
 </div>
-<!-- /nav-lang -->
