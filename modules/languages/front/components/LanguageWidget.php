@@ -17,7 +17,7 @@ class LanguageWidget extends Widget
 
     public function run()
     {
-        $current = Languages::findOne(Languages::getCurrent()->id);
+        $current = Languages::find()->where(['id' => Languages::getCurrent()->id])->one();
 
         if ($current !== null) {
             $models = Languages::find()->where(['is_active' => 1])->andWhere(['<>', 'id', $current->id])->all();

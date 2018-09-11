@@ -5,7 +5,7 @@
 */
 ?>
 <div class="lang-selector">
-    <a class="current-lang" href="javascript:void;"><?=$current->title?></a>
+    <a class="current-lang" href="#"><?=$current->title?></a>
     <ul>
         <?php foreach ($models as $model) : ?>
             <li>
