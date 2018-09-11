@@ -79,7 +79,7 @@ class Pages extends ActiveRecord
     {
 
         return [
-            [['title', 'lang_id'], 'required'],
+            [['title'], 'required'],
             [['sefname'], 'unique'],
             [
                 [

@@ -77,7 +77,7 @@ class DefaultController extends MBTController
         $programms = $query
             ->limit($pagination->limit)
             ->offset($pagination->offset)
-            ->orderBy(['create_date' => SORT_DESC])
+            ->orderBy(['create_date' => SORT_ASC])
             ->all();
 
         if (!$programms) {

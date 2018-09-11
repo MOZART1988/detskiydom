@@ -12,13 +12,13 @@
             <h1 class="yellow-title"><?=\Yii::t('front', 'Живые истории')?></h1>
             <div class="stories-list">
                 <div class="top-story-item">
-                    <a href="<?=\yii\helpers\Url::to(['/histories/default/view', 'id' => $topHistory->id])?>">
-                        <?=\yii\helpers\Html::img(
-                            \app\components\behaviors\PreviewBehaviour::getImageUrl(
-                                'histories', $topHistory->image, $topHistory->id, '_558x389_'))?>
+                    <a href="#">
+                        <img src="/images/top-story.jpg">
                         <div class="top-story-text">
-                            <div class="top-story-title"> <?=$topHistory->title?> </div>
-                            <p> <?=$topHistory->short_text?> </p>
+                            <div class="top-story-title"> <?=\Yii::t('front', 'Живые истории')?> </div>
+                            <p> <?=\Yii::t('front', 'В этом разделе мы публикуем истории появления детей с синдромом Дауна. 
+                            В них мамы делятся своими переживаниями, этапами принятия «особенности» своих детей, их успехами. 
+                            Если вы тоже хотите поделиться своей историей, пишите нам на e-mail: kunbala.fund@gmail.com')?> </p>
                         </div>
                     </a>
                 </div>
