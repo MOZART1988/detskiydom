@@ -112,7 +112,7 @@ class Pages extends ActiveRecord
             'id' => Yii::t('pages', 'ID'),
             'lang_id' => Yii::t('pages', 'Язык'),
             'title' => Yii::t('pages', 'Заголовок'),
-            'short_text' => Yii::t('pages', 'Краткое описание на главной'),
+            'short_text' => Yii::t('pages', 'Краткое описание'),
             'text' => Yii::t('pages', 'Текст'),
             'sefname' => Yii::t('pages', 'ЧПУ'),
             'is_active' => Yii::t('pages', 'Активность'),
