@@ -121,10 +121,10 @@ $current_user = \app\modules\users\models\Users::findOne(\Yii::$app->getUser()->
                                                 'label' => 'Видео',
                                                 'url' => ['/videos/default/index']
                                             ],
-                                            [
+                                            /*[
                                                 'label' => 'Опрос',
                                                 'url' => ['/poll/default/index']
-                                            ]
+                                            ]*/
                                         ]
                                     ],
                                     [
@@ -133,8 +133,8 @@ $current_user = \app\modules\users\models\Users::findOne(\Yii::$app->getUser()->
                                         'url' => '#',
                                         'items' => [
                                             ['label' => 'Языки', 'url' => ['/languages/default/index']],
-                                            ['label' => 'Меню', 'url' => ['/menu/default/index']],
-                                            ['label' => 'Переменные', 'url' => ['/custom_variables/default/index']]
+                                            //['label' => 'Меню', 'url' => ['/menu/default/index']],
+                                            //['label' => 'Переменные', 'url' => ['/custom_variables/default/index']]
                                         ]
                                     ],
                                     [
