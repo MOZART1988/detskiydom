@@ -147,6 +147,7 @@ class Content extends LanguageActiveRecord
 
 
         if ($element->save()) {
+
             return $this->copyImage($element->id);
         }
 
@@ -174,17 +175,17 @@ class Content extends LanguageActiveRecord
 
         $newImageName = $newId . '-copied-' . $this->getImageName();
 
-        if (!is_dir(\Yii::getAlias('@media') . '/slides/')) {
-            mkdir(\Yii::getAlias('@media') . '/slides/');
+        if (!is_dir(\Yii::getAlias('@media') . '/content/')) {
+            mkdir(\Yii::getAlias('@media') . '/content/');
         }
 
-        if (!is_dir(\Yii::getAlias('@media') . '/slides/' . $newId)) {
-            mkdir(\Yii::getAlias('@media') . '/slides/' . $newId);
+        if (!is_dir(\Yii::getAlias('@media') . '/content/' . $newId)) {
+            mkdir(\Yii::getAlias('@media') . '/content/' . $newId);
         }
 
         if (!empty($this->image) && is_file($this->getFullImagePath())) {
-            copy($this->getFullImagePath(), \Yii::getAlias('@media') . '/slides/' . $newId . '/' . $newImageName);
-            copy($this->getFullImagePathThumb(), \Yii::getAlias('@media') . '/slides/' . $newId . '/' . 'thumb-'.$newImageName);
+            copy($this->getFullImagePath(), \Yii::getAlias('@media') . '/content/' . $newId . '/' . $newImageName);
+            copy($this->getFullImagePathThumb(), \Yii::getAlias('@media') . '/content/' . $newId . '/' . 'thumb-'.$newImageName);
         }
 
         $newElement->image = $newImageName;
