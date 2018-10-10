@@ -94,7 +94,6 @@ class Content extends LanguageActiveRecord
                 'url' => '@web/media/content/{id}',
                 'thumbs' => [
                     'thumb' => ['width' => 200, 'quality' => 100],
-                    'inside' => ['width' => 890, 'quality' => 100],
                 ],
             ],
             [
@@ -186,7 +185,6 @@ class Content extends LanguageActiveRecord
         if (!empty($this->image) && is_file($this->getFullImagePath())) {
             copy($this->getFullImagePath(), \Yii::getAlias('@media') . '/slides/' . $newId . '/' . $newImageName);
             copy($this->getFullImagePathThumb(), \Yii::getAlias('@media') . '/slides/' . $newId . '/' . 'thumb-'.$newImageName);
-            copy($this->getFullImagePathThumb(), \Yii::getAlias('@media') . '/content/' . $newId . '/' . 'inside-'.$newImageName);
         }
 
         $newElement->image = $newImageName;

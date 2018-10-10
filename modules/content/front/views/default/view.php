@@ -9,7 +9,7 @@
         <section class="center-block">
             <div class="content">
                 <h1 class="yellow-title"><?=$content->title?></h1>
-                <?=\yii\helpers\Html::img($content->getThumbUploadUrl('image', 'inside'))?>
+                <?=\yii\helpers\Html::img(\app\components\behaviors\PreviewBehaviour::getImageUrl( 'content', $item->image, $item->id, '_885x292_'))?>
                 <?=$content->text?>
                 <?php if (!empty($content->quote)) : ?>
                     <blockquote> <?=$content->quote?> </blockquote>
