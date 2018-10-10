@@ -10,6 +10,14 @@ use yii\grid\GridView;
 $this->title = Yii::t('admin', 'Слайды');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+<?php if (Yii::$app->session->hasFlash('successCopy')): ?>
+    <div class="alert alert-success alert-success">
+        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+        <?= Yii::$app->session->getFlash('successCopy') ?>
+    </div>
+<?php endif; ?>
+
 <div class="users-index">
     <div class="page-heading">
         <h1><i class="icon-users"></i> <?= Html::encode($this->title) ?></h1>
@@ -25,14 +33,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'layout' => "{items}\n{pager}",
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => \yii\grid\SerialColumn::class],
             'title',
             'text',
             'link',
             'create_date',
-            [
+            'actions' => [
                 'class' => \yii\grid\ActionColumn::class,
-            ],
+                'template' => '{copy} {update} {delete}',
+                'buttons' => [
+                    'copy' => function ($url, $model) {
+                        return \yii\helpers\Html::a('<span class="glyphicon glyphicon-repeat"></span>',
+                            ['copy-to-another-lang', 'id' => $model->id], [
+                                'title' => 'Скопировать элемент'
+                            ]);
+                    }
+                ],
+            ]
         ],
     ]); ?>
 </div>

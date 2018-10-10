@@ -8,10 +8,13 @@
 
 namespace app\modules\slides\admin\controllers;
 
+use app\modules\languages\models\Languages;
 use app\modules\slides\models\Slides;
 use app\modules\slides\models\SlidesSearch;
 use mtemplate\mcontrollers\MBTAController;
 use yii\web\NotFoundHttpException;
+use Yii;
+use yii\web\Response;
 
 class DefaultController extends MBTAController
 {
@@ -91,5 +94,37 @@ class DefaultController extends MBTAController
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Copies element to another lang version
+     * @param  integer $id
+     * @return Response
+     * @throws NotFoundHttpException
+    */
+    public function actionCopyToAnotherLang($id)
+    {
+        $current = Slides::findOne($id);
+
+        if ($current === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $langId = Languages::getAdminCurrent()->id;
+
+        $languages = Languages::find()->where(['<>', 'id', $langId])->all();
+
+        if (!$languages) {
+            throw new NotFoundHttpException();
+        }
+
+        foreach($languages as $lang) {
+            $current->copy($lang->id);
+        }
+
+        Yii::$app->session->setFlash('successCopy', 'Элемент скопирован в другую языковую версию');
+
+        return $this->redirect(\Yii::$app->request->referrer);
+
     }
 }

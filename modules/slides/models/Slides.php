@@ -114,4 +114,22 @@ class Slides extends LanguageActiveRecord
     {
         return $this->hasOne(Languages::class, ['id' => 'lang_id']);
     }
+
+    /**
+     * @inheritdoc
+     * @return bool
+    */
+    public function copy($langId)
+    {
+        return (new self(
+            [
+                'is_active' => $this->is_active,
+                'title' => $this->title,
+                'link' => $this->link,
+                'text' => $this->text,
+                'lang_id' => $langId,
+                'image' => $this->image
+            ]
+        ))->save();
+    }
 }
