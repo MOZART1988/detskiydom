@@ -8,6 +8,7 @@
 
 namespace app\modules\content\models;
 
+use app\components\behaviors\PreviewBehaviour;
 use app\modules\languages\models\Languages;
 use mongosoft\file\UploadImageBehavior;
 use mtemplate\mclasses\ActiveRecord;
@@ -95,6 +96,13 @@ class Content extends LanguageActiveRecord
                     'thumb' => ['width' => 200, 'quality' => 100],
                     'inside' => ['width' => 890, 'quality' => 100],
                 ],
+            ],
+            [
+                'class' => PreviewBehaviour::class,
+                'attribute' => 'image',
+                'previews' => [
+                    [885, 292],
+                ]
             ],
             'Sluggable' => [
                 'class' => SluggableBehavior::class,
