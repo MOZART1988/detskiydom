@@ -104,6 +104,7 @@ class DefaultController extends MBTAController
     */
     public function actionCopyToAnotherLang($id)
     {
+
         $current = Slides::findOne($id);
 
         if ($current === null) {
@@ -111,6 +112,7 @@ class DefaultController extends MBTAController
         }
 
         $langId = Languages::getAdminCurrent()->id;
+
 
         $languages = Languages::find()->where(['<>', 'id', $langId])->all();
 

@@ -17,7 +17,9 @@ class LanguageActiveRecord extends ActiveRecord
     {
         parent::beforeValidate();
 
-        $this->lang_id = Languages::getAdminCurrent()->id;
+        if ($this->hasAttribute('lang_id') && empty($this->lang_id)) {
+            $this->lang_id = Languages::getAdminCurrent()->id;
+        }
 
         return true;
     }

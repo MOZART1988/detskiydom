@@ -49,6 +49,12 @@ class PreviewBehaviour extends Behavior
             Yii::getAlias('@webroot') . '/media/' . $this->owner->tableName() . '/'.$this->owner->id.'/' . $this->owner->{$this->attribute};
     }
 
+    public function getFullImagePathThumb()
+    {
+        return
+            Yii::getAlias('@webroot') . '/media/' . $this->owner->tableName() . '/'.$this->owner->id.'/' . 'thumb-'.$this->owner->{$this->attribute};
+    }
+
     public function getImageName()
     {
         if (is_file($this->getFullImagePath())) {

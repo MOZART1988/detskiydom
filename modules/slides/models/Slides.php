@@ -121,15 +121,60 @@ class Slides extends LanguageActiveRecord
     */
     public function copy($langId)
     {
-        return (new self(
+        $element =  new self(
             [
                 'is_active' => $this->is_active,
                 'title' => $this->title,
                 'link' => $this->link,
                 'text' => $this->text,
-                'lang_id' => $langId,
-                'image' => $this->image
+                'lang_id' => $langId
             ]
-        ))->save();
+        );
+
+
+        if ($element->save()) {
+            return $this->copyImage($element->id);
+        }
+
+        return false;
+
+    }
+
+    /**
+     * @inheritdoc
+     * @param int $newId
+     * @return bool;
+    */
+    public function copyImage($newId)
+    {
+        $newElement = self::find()->where(['id' => $newId])->one();
+
+        if ($newElement === null) {
+            return false;
+        }
+
+        if (!$this->image) {
+
+            return false;
+        }
+
+        $newImageName = $newId . '-copied-' . $this->getImageName();
+
+        if (!is_dir(\Yii::getAlias('@media') . '/slides/')) {
+            mkdir(\Yii::getAlias('@media') . '/slides/');
+        }
+
+        if (!is_dir(\Yii::getAlias('@media') . '/slides/' . $newId)) {
+            mkdir(\Yii::getAlias('@media') . '/slides/' . $newId);
+        }
+
+        if (!empty($this->image) && is_file($this->getFullImagePath())) {
+            copy($this->getFullImagePath(), \Yii::getAlias('@media') . '/slides/' . $newId . '/' . $newImageName);
+            copy($this->getFullImagePathThumb(), \Yii::getAlias('@media') . '/slides/' . $newId . '/' . 'thumb-'.$newImageName);
+        }
+
+        $newElement->image = $newImageName;
+
+        return $newElement->save();
     }
 }
