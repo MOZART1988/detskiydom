@@ -10,9 +10,11 @@ namespace app\modules\content\admin\controllers;
 
 use app\modules\content\models\Content;
 use app\modules\content\models\ContentSearch;
+use app\modules\languages\models\Languages;
 use mtemplate\mcontrollers\MBTAController;
 use Yii;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 class DefaultController extends MBTAController
 {
@@ -95,5 +97,38 @@ class DefaultController extends MBTAController
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Copies element to another lang version
+     * @param  integer $id
+     * @return Response
+     * @throws NotFoundHttpException
+     */
+    public function actionCopyToAnotherLang($id)
+    {
+        $current = Content::findOne($id);
+
+        if ($current === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $langId = Languages::getAdminCurrent()->id;
+
+
+        $languages = Languages::find()->where(['<>', 'id', $langId])->all();
+
+        if (!$languages) {
+            throw new NotFoundHttpException();
+        }
+
+        foreach($languages as $lang) {
+            $current->copy($lang->id);
+        }
+
+        Yii::$app->session->setFlash('successCopy', 'Элемент скопирован в другую языковую версию');
+
+        return $this->redirect(\Yii::$app->request->referrer);
+
     }
 }

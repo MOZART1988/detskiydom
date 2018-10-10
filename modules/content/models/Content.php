@@ -8,16 +8,20 @@
 
 namespace app\modules\content\models;
 
+use app\modules\languages\models\Languages;
 use mongosoft\file\UploadImageBehavior;
 use mtemplate\mclasses\ActiveRecord;
+use mtemplate\mclasses\LanguageActiveRecord;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
 use yii\db\Expression;
 
 /**
  * @property integer $id
  * @property integer $is_active
+ * @property integer $lang_id
  *
  * @property string $image
  * @property string $create_date
@@ -29,7 +33,7 @@ use yii\db\Expression;
  * @property string $goals
 */
 
-class Content extends ActiveRecord
+class Content extends LanguageActiveRecord
 {
 
     public static function tableName()
@@ -43,8 +47,8 @@ class Content extends ActiveRecord
     public function rules()
     {
         return [
-            [['is_active'], 'integer'],
-            [['title', 'sefname'], 'required'],
+            [['is_active', 'lang_id'], 'integer'],
+            [['title', 'sefname', 'lang_id'], 'required'],
             [['text', 'sefname', 'quote', 'goals'], 'string'],
             [['create_date', 'update_date'], 'safe'],
             ['image', 'image', 'extensions' => 'jpg, jpeg, gif, png', 'on' => ['create', 'update']],
@@ -65,7 +69,8 @@ class Content extends ActiveRecord
             'sefname' => 'ЧПУ',
             'goals' => 'Цели (каждую строчку писать с новой строки)',
             'quote' => 'Цитата',
-            'is_programm' => 'Программа фонда'
+            'is_programm' => 'Программа фонда',
+            'lang_id' => 'Язык'
         ];
     }
 
@@ -102,6 +107,82 @@ class Content extends ActiveRecord
 
     public static function find()
     {
-         return new ContentQuery(get_called_class());
+        $query = new ContentQuery(get_called_class());
+
+        return $query->setLanguage();
+    }
+
+    /**
+     * @inheritdoc
+     * @return ActiveQuery
+     */
+    public function getLanguage()
+    {
+        return $this->hasOne(Languages::class, ['id' => 'lang_id']);
+    }
+
+    /**
+     * @inheritdoc
+     * @return bool
+     */
+    public function copy($langId)
+    {
+        $element =  new self(
+            [
+                'is_active' => $this->is_active,
+                'title' => $this->title,
+                'text' => $this->text,
+                'quote' => $this->quote,
+                'goals' => $this->goals,
+                'lang_id' => $langId
+            ]
+        );
+
+
+        if ($element->save()) {
+            return $this->copyImage($element->id);
+        }
+
+        return false;
+
+    }
+
+    /**
+     * @inheritdoc
+     * @param int $newId
+     * @return bool;
+     */
+    public function copyImage($newId)
+    {
+        $newElement = self::find()->where(['id' => $newId])->one();
+
+        if ($newElement === null) {
+            return false;
+        }
+
+        if (!$this->image) {
+
+            return false;
+        }
+
+        $newImageName = $newId . '-copied-' . $this->getImageName();
+
+        if (!is_dir(\Yii::getAlias('@media') . '/slides/')) {
+            mkdir(\Yii::getAlias('@media') . '/slides/');
+        }
+
+        if (!is_dir(\Yii::getAlias('@media') . '/slides/' . $newId)) {
+            mkdir(\Yii::getAlias('@media') . '/slides/' . $newId);
+        }
+
+        if (!empty($this->image) && is_file($this->getFullImagePath())) {
+            copy($this->getFullImagePath(), \Yii::getAlias('@media') . '/slides/' . $newId . '/' . $newImageName);
+            copy($this->getFullImagePathThumb(), \Yii::getAlias('@media') . '/slides/' . $newId . '/' . 'thumb-'.$newImageName);
+            copy($this->getFullImagePathThumb(), \Yii::getAlias('@media') . '/content/' . $newId . '/' . 'inside-'.$newImageName);
+        }
+
+        $newElement->image = $newImageName;
+
+        return $newElement->save();
     }
 }
