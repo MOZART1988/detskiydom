@@ -136,7 +136,8 @@ class DefaultController extends MBTController
             throw new NotFoundHttpException();
         }
 
-        $otherModels = Pages::find()->where(['is_active' => 1, 'type_id' => Pages::TYPE_FAQ])->andWhere(['<>', 'id', $model->id])->all();
+        $otherModels = Pages::find()->where(['is_active' => 1,
+            'type_id' => Pages::TYPE_FAQ, 'lang_id' => Languages::getCurrent()->id])->andWhere(['<>', 'id', $model->id])->all();
 
         $this->setMeta($model->title);
 

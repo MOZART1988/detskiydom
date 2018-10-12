@@ -30,7 +30,7 @@
                             <a href="<?=\yii\helpers\Url::to(['/pages/default/info-view', 'id' => $model->id])?>"><?=$model->title?></a>
                         </div>
                     <?php endforeach ; ?>
-                    <a href="<?=\yii\helpers\Url::to(['/pages/default/info'])?>" class="btn btn--orangeSmall">Все статьи</a>
+                    <a href="<?=\yii\helpers\Url::to(['/pages/default/info'])?>" class="btn btn--orangeSmall"><?=\Yii::t('front', 'Все статьи')?></a>
                 </div>
             <?php endif; ?>
             <?=\app\modules\pages\front\components\widgets\ContactFormSidebarWidget::widget()?>

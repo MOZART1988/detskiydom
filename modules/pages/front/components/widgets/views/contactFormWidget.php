@@ -15,6 +15,6 @@ use yii\widgets\ActiveForm;
         'placeholder' => \Yii::t('front', 'Ваши предложения'),
         'rows' => 7
     ])->label(false) ?>
-    <button type="submit" class="btn btn--form">ОТПРАВИТЬ</button>
+    <button type="submit" class="btn btn--form"><?=\Yii::t('front', 'Отправить')?></button>
     <?php ActiveForm::end(); ?>
 </div>
