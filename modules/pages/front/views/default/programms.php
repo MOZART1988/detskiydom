@@ -7,7 +7,7 @@
 <div class="container">
     <div class="flex-container">
         <section class="center-block">
-            <h1 class="yellow-title">программы фонда</h1>
+            <h1 class="yellow-title"><?=\Yii::t('front', 'Программы фонда')?></h1>
             <div class="programms-list">
                 <?php foreach ($programms as $programm) : ?>
                     <div class="programm-item <?=\app\modules\pages\models\Pages::$backgroundColors[mt_rand(0, 3)]?>">

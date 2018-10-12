@@ -234,6 +234,7 @@ class Pages extends LanguageActiveRecord
 
         if (!empty($this->image) && is_file($this->getFullImagePath())) {
             copy($this->getFullImagePath(), \Yii::getAlias('@media') . '/pages/' . $newId . '/' . $newImageName);
+            copy($this->getFullImagePathThumb(), \Yii::getAlias('@media') . '/pages/' . $newId . '/' . 'thumb-'.$newImageName);
         }
 
         $newElement->image = $newImageName;
