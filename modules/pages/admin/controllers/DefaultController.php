@@ -2,12 +2,13 @@
 
 namespace app\modules\pages\admin\controllers;
 
-use Codeception\PHPUnit\Constraint\Page;
+use app\modules\languages\models\Languages;
 use mtemplate\mcontrollers\MBTAController;
 use Yii;
 use app\modules\pages\models\Pages;
 use app\modules\pages\models\PagesSearch;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 /**
  * DefaultController implements the CRUD actions for Pages model.
@@ -139,5 +140,38 @@ class DefaultController extends MBTAController
         }
 
         return false;
+    }
+
+    /**
+     * Copies element to another lang version
+     * @param  integer $id
+     * @return Response
+     * @throws NotFoundHttpException
+     */
+    public function actionCopyToAnotherLang($id)
+    {
+        $current = Pages::find()->where(['id' => $id])->one();
+
+        if ($current === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $langId = Languages::getAdminCurrent()->id;
+
+
+        $languages = Languages::find()->where(['<>', 'id', $langId])->all();
+
+        if (!$languages) {
+            throw new NotFoundHttpException();
+        }
+
+        foreach($languages as $lang) {
+            $current->copy($lang->id);
+        }
+
+        Yii::$app->session->setFlash('successCopy', 'Элемент скопирован в другую языковую версию');
+
+        return $this->redirect(\Yii::$app->request->referrer);
+
     }
 }

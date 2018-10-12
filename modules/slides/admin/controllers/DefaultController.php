@@ -105,7 +105,7 @@ class DefaultController extends MBTAController
     public function actionCopyToAnotherLang($id)
     {
 
-        $current = Slides::findOne($id);
+        $current = Slides::find()->where(['id' => $id])->one();
 
         if ($current === null) {
             throw new NotFoundHttpException();

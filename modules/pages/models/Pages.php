@@ -5,6 +5,7 @@ namespace app\modules\pages\models;
 use app\components\behaviors\PreviewBehaviour;
 use app\modules\languages\models\Languages;
 use mtemplate\mclasses\ActiveRecord;
+use mtemplate\mclasses\LanguageActiveRecord;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -33,7 +34,7 @@ use mongosoft\file\UploadImageBehavior;
  * @property Languages $language
  * @property Pages $next
  */
-class Pages extends ActiveRecord
+class Pages extends LanguageActiveRecord
 {
     const TYPE_NEWS = 1;
     const TYPE_PROGRAMM = 2;
@@ -173,5 +174,70 @@ class Pages extends ActiveRecord
     public function getLanguage()
     {
         return $this->hasOne(Languages::class, ['id' => 'lang_id']);
+    }
+
+    /**
+     * @inheritdoc
+     * @return bool
+     */
+    public function copy($langId)
+    {
+        $element =  new self(
+            [
+                'is_active' => $this->is_active,
+                'title' => $this->title,
+                'text' => $this->text,
+                'lang_id' => $langId,
+                'sort' => $this->sort,
+                'type_id' => $this->type_id,
+                'pub_date' => $this->pub_date,
+                'sefname' => $this->sefname . '-' . Languages::findOne($langId)->code
+            ]
+        );
+
+
+        if ($element->save()) {
+            return $this->copyImage($element->id);
+        }
+
+        return false;
+
+    }
+
+    /**
+     * @inheritdoc
+     * @param int $newId
+     * @return bool;
+     */
+    public function copyImage($newId)
+    {
+        $newElement = self::find()->where(['id' => $newId])->one();
+
+        if ($newElement === null) {
+            return false;
+        }
+
+        if (!$this->image) {
+
+            return false;
+        }
+
+        $newImageName = $newId . '-copied-' . $this->getImageName();
+
+        if (!is_dir(\Yii::getAlias('@media') . '/pages/')) {
+            mkdir(\Yii::getAlias('@media') . '/pages/');
+        }
+
+        if (!is_dir(\Yii::getAlias('@media') . '/pages/' . $newId)) {
+            mkdir(\Yii::getAlias('@media') . '/pages/' . $newId);
+        }
+
+        if (!empty($this->image) && is_file($this->getFullImagePath())) {
+            copy($this->getFullImagePath(), \Yii::getAlias('@media') . '/pages/' . $newId . '/' . $newImageName);
+        }
+
+        $newElement->image = $newImageName;
+
+        return $newElement->save();
     }
 }
