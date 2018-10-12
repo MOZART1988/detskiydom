@@ -43,7 +43,7 @@ class BreadcumsWidget extends Widget
                         }
                         break;
                     case 'contact':
-                        $result[] = 'Контакты';
+                        $result[] = \Yii::t('front', 'Контакты');
                     break;
                 }
 
@@ -51,10 +51,10 @@ class BreadcumsWidget extends Widget
             case 'pages':
                 switch (\Yii::$app->controller->action->id) {
                     case 'news':
-                        $result[] = 'Новости';
+                        $result[] = \Yii::t('front', 'Новости');
                         break;
                     case 'news-view':
-                        $result[] = '<a href="/news/">Новости</a>';
+                        $result[] = '<a href="'.Url::to(['/pages/default/news']).'">'.\Yii::t('front', 'Новости').'</a>';
 
                         $newsId = \Yii::$app->request->get('id');
                         $model = Pages::findOne($newsId);
@@ -64,7 +64,7 @@ class BreadcumsWidget extends Widget
                         }
                         break;
                     case 'info-view':
-                        $result[] = '<a href="/info/">Полезная информация</a>';
+                        $result[] = '<a href="'.Url::to(['/pages/default/info']).'">'.\Yii::t('front', 'Полезная информация').'</a>';
 
                         $newsId = \Yii::$app->request->get('id');
                         $model = Pages::findOne($newsId);
@@ -74,20 +74,20 @@ class BreadcumsWidget extends Widget
                         }
                         break;
                     case 'info':
-                        $result[] = 'Полезная информация';
+                        $result[] = \Yii::t('front', 'Полезная информация');
                         break;
                     case 'programms':
-                        $result[] = 'Программы фонда';
+                        $result[] = \Yii::t('front', 'Программы фонда');
                         break;
                 }
             break;
             case 'histories':
                 switch(\Yii::$app->controller->action->id) {
                     case 'index':
-                        $result[] = 'Живые истории';
+                        $result[] = \Yii::t('front', 'Живые истории');
                         break;
                     case 'view':
-                        $result[] = '<a href="/histories/">Живые истории</a>';
+                        $result[] = '<a href="'.Url::to(['/histories/default/index']).'">'.\Yii::t('front', 'Живые истории').'</a>';
 
                         $newsId = \Yii::$app->request->get('id');
                         $model = Histories::findOne($newsId);
