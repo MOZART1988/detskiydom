@@ -33,7 +33,7 @@
             </div>
             <div class="header-right">
                 <a href="<?=\yii\helpers\Url::to(['/content/default/view', 'id' => \app\modules\languages\models\Languages::getCurrent()->code === 'ru' ? 2 : 8 ])?>" class="btn btn--orange"> <?=\Yii::t('front', 'Сделайте свой вклад')?> </a>
-                <a href="#" data-toggle="modal" data-target="#quiz-modal" class="btn btn--orangelight"> <?=\Yii::t('front', 'Участвуйте в опросе')?> </a>
+                <!--<a href="#" data-toggle="modal" data-target="#quiz-modal" class="btn btn--orangelight"> <?=\Yii::t('front', 'Участвуйте в опросе')?> </a>-->
             </div>
         </div>
         <?=$this->render('_header_menu')?>
